@@ -6,23 +6,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
-	
+
 	<ui:define name="title">
 		<h:outputText value="#{msg['pages.inscricao.title']}" />
 	</ui:define>
-	
+
 	<ui:define name="principal">
-	  
-	<h1><p:outputLabel value="#{msg['pages.inscricao.menu']}"/></h1>
-	  
-	<h:form id="formInscricao">	
-		<p:panelGrid columns="2">
-	    	<p:outputLabel value="#{msg['pages.inscricao.quantidade']}" />
-	    	<p:outputLabel value="300" />
-		</p:panelGrid>
-		
-		<p:commandButton value="#{msg['pages.inscricao.botao']}"        
-	                 />
-     </h:form>
-</ui:define>
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.inscricao.menu']}" />
+		</h1>
+
+		<h:form id="formInscricao">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="#{msg['pages.inscricao.quantidade']}" />
+				<p:outputLabel value="300" />
+			</p:panelGrid>
+
+			<p:commandButton value="#{msg['pages.inscricao.botao']}" />
+		</h:form>
+	</ui:define>
 </ui:composition>

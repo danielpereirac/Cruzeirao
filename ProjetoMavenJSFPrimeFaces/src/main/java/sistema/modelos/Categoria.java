@@ -1,6 +1,7 @@
 package sistema.modelos;
 
 public class Categoria {
+	
 	private int codigoCategoria;
 	private String tipoCategoria;
 	private int qntMinJogadores;

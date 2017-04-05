@@ -1,6 +1,7 @@
 package sistema.modelos;
 
 public class Time {
+	
 	private int matricula;
 	private String nome;
 	private String tecnico;

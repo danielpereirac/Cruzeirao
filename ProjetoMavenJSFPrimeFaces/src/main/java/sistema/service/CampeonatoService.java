@@ -10,7 +10,6 @@ public class CampeonatoService {
 	
 	public CampeonatoService()
 	{
-
 	}
 	
 	public void salvar(Campeonato campeonato)
@@ -20,7 +19,6 @@ public class CampeonatoService {
 
 	public List <Campeonato> getCampeonatos()
 	{
-		
 		return campeonatos;
 	}	
 }

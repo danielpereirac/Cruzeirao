@@ -12,15 +12,22 @@ import sistema.service.CampeonatoService;
 @SessionScoped
 public class CampeonatoManagedBean {
 	
-	private Campeonato campeonato = new Campeonato();
+	private int codigoCampeonato = 1;
+	private Campeonato campeonato = new Campeonato(codigoCampeonato);
+	private Campeonato campeonatoAtual;
 	private CampeonatoService service = new CampeonatoService();
-	
 	
 	public void salvar()
 	{
 		service.salvar(campeonato);
-		campeonato = new Campeonato();
-		
+		codigoCampeonato++;
+		campeonato = new Campeonato(codigoCampeonato);	
+	}
+	
+	public boolean inscricao(Campeonato campeonato)
+	{
+		this.campeonatoAtual = campeonato;
+		return campeonatoAtual.isInscricao();
 	}
 
 	public Campeonato getCampeonato() {
@@ -33,5 +40,13 @@ public class CampeonatoManagedBean {
 
 	public List<Campeonato> getCampeonatos() {
 		return service.getCampeonatos();
+	}
+
+	public Campeonato getCampeonatoAtual() {
+		return campeonatoAtual;
+	}
+
+	public void setCampeonatoAtual(Campeonato campeonatoAtual) {
+		this.campeonatoAtual = campeonatoAtual;
 	}
 }

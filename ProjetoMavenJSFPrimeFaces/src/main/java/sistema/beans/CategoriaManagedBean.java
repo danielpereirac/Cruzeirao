@@ -15,12 +15,10 @@ public class CategoriaManagedBean {
 	private Categoria categoria = new Categoria();
 	private CategoriaService service = new CategoriaService();
 	
-	
 	public void salvar()
 	{
 		service.salvar(categoria);
 		categoria = new Categoria();
-		
 	}
 
 	public Categoria getCategoria() {

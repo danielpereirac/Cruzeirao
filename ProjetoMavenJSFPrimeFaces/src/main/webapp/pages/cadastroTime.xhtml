@@ -6,59 +6,52 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
-	
+
 	<ui:define name="title">
 		<h:outputText value="#{msg['pages.cadastroTime.title']}" />
 	</ui:define>
-	
+
 
 	<ui:define name="principal">
-	  
-	  <h1><p:outputLabel value="#{msg['pages.cadastroTime.menu']}"/></h1>
-	  
-	  <h:form id="formTime">	
-	  <p:panelGrid columns="2">
-      <p:outputLabel value="#{msg['pages.cadastroTime.matricula']}" />
-      <p:inputText value="#{timeManagedBean.time.matricula}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
-      <p:inputText value="#{timeManagedBean.time.nome}"/>
-      <p:outputLabel value="#{msg['pages.cadastroTime.tecnico']}" />
-      <p:inputText value="#{timeManagedBean.time.tecnico}"/>
-      <p:outputLabel value="#{msg['pages.cadastroTime.categoria']}" />
-      <p:inputText value="#{timeManagedBean.time.categoria}"/>
-      <p:outputLabel value="#{msg['pages.cadastroTime.jogadores']}" />
-      <p:inputText value="#{timeManagedBean.time.jogador}"/>
-	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}" 
-	                 action="#{timeManagedBean.salvar}"
-	                 update=":formTime, :tabelaTime"
-	                 />
-       </h:form>
-	
-   <p:dataTable value="#{timeManagedBean.times}"
-                var="aux"
-                id="tabelaTime"
-   >
-      <p:column headerText="#{msg['pages.cadastroTime.matricula']}">
-        <p:outputLabel value="#{aux.matricula}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroTime.nome']}">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroTime.tecnico']}">
-        <p:outputLabel value="#{aux.tecnico}" />
-      </p:column>
-       <p:column headerText="#{msg['pages.cadastroTime.categoria']}">
-        <p:outputLabel value="#{aux.categoria}" />
-      </p:column>
-       <p:column headerText="#{msg['pages.cadastroTime.jogadores']}">
-        <p:outputLabel value="#{aux.jogador}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.inscricao.title1']}">
-        <p:link href="inscricaoTime.xhtml">Inscrição</p:link>
-      </p:column>
-      
-   </p:dataTable>	
-	   
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastroTime.menu']}" />
+		</h1>
+
+		<h:form id="formTime">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
+				<p:inputText value="#{timeManagedBean.time.nome}" />
+				<p:outputLabel value="#{msg['pages.cadastroTime.tecnico']}" />
+				<p:inputText value="#{timeManagedBean.time.tecnico}" />
+				<p:outputLabel value="#{msg['pages.cadastroTime.categoria']}" />
+				<p:inputText value="#{timeManagedBean.time.categoria}" />
+				<p:outputLabel value="#{msg['pages.cadastroTime.jogadores']}" />
+				<p:inputText value="#{timeManagedBean.time.jogador}" />
+			</p:panelGrid>
+			<p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}"
+				action="#{timeManagedBean.salvar}" update=":formTime, :tabelaTime" />
+		</h:form>
+
+		<p:dataTable value="#{timeManagedBean.times}" var="aux"
+			id="tabelaTime">
+			<p:column headerText="#{msg['pages.cadastroTime.nome']}">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroTime.tecnico']}">
+				<p:outputLabel value="#{aux.tecnico}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroTime.categoria']}">
+				<p:outputLabel value="#{aux.categoria}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroTime.jogadores']}">
+				<p:outputLabel value="#{aux.jogador}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.inscricao.title1']}">
+				<p:link href="inscricaoTime.xhtml">Inscrição</p:link>
+			</p:column>
+
+		</p:dataTable>
+
 	</ui:define>
 </ui:composition>

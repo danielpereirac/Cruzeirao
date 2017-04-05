@@ -1,6 +1,7 @@
 package sistema.modelos;
 
 public class Jogador extends Usuario{
+	
 	private int matricula;
 
 	public int getMatricula() {

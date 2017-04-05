@@ -2,7 +2,6 @@ package sistema.bean.locale;
 
 import java.util.Locale;
 
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -13,7 +12,6 @@ public class LocaleBean {
 
     private Locale locale = Locale.ENGLISH;
 
-  
     public Locale getLocale() {
         return locale;
     }
@@ -26,5 +24,4 @@ public class LocaleBean {
         locale = new Locale(language);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
     }
-
 }

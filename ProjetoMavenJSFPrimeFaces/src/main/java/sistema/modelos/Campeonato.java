@@ -7,6 +7,14 @@ public class Campeonato {
 	private String nomeCampeonato;
 	private int dataInicioCampeonato;
 	private int dataFimCampeonato;
+	private boolean inscricao;
+	private int periodoInicioInscricao;
+	private int periodoFimInscricao;
+	
+	public Campeonato(int codigo)
+	{
+		this.codigoCampeonato = codigo;
+	}
 	
 	public int getCodigoCampeonato() {
 		return codigoCampeonato;
@@ -37,5 +45,23 @@ public class Campeonato {
 	}
 	public void setDataFimCampeonato(int dataFimCampeonato) {
 		this.dataFimCampeonato = dataFimCampeonato;
+	}
+	public boolean isInscricao() {
+		return inscricao;
+	}
+	public void setInscricao(boolean inscricao) {
+		this.inscricao = inscricao;
+	}
+	public int getPeriodoInicioInscricao() {
+		return periodoInicioInscricao;
+	}
+	public void setPeriodoInicioInscricao(int periodoInicioInscricao) {
+		this.periodoInicioInscricao = periodoInicioInscricao;
+	}
+	public int getPeriodoFimInscricao() {
+		return periodoFimInscricao;
+	}
+	public void setPeriodoFimInscricao(int periodoFimInscricao) {
+		this.periodoFimInscricao = periodoFimInscricao;
 	}
 }

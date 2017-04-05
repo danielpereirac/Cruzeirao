@@ -10,7 +10,6 @@ public class CategoriaService {
 	
 	public CategoriaService()
 	{
-
 	}
 	
 	public void salvar(Categoria categoria)

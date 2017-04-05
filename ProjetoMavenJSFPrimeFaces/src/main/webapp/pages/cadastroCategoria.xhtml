@@ -6,58 +6,51 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
-	
+
 	<ui:define name="title">
 		<h:outputText value="#{msg['pages.cadastroCategoria.title']}" />
 	</ui:define>
-	
+
 
 	<ui:define name="principal">
-	  
-	  <h1><p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}"/></h1>
-	  
-	  <h:form id="formCategoria">	
-	  <p:panelGrid columns="2">
-      <p:outputLabel value="#{msg['pages.cadastroCategoria.cod']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.codigoCategoria}"/>
-	  <p:outputLabel value="#{msg['pages.cadastroCategoria.tipoCategoria']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.tipoCategoria}"/>
-      <p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.qntMinJogadores}"/>
-      <p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.qntMaxJogadores}"/>
-      <p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
-      <p:inputText value="#{categoriaManagedBean.categoria.sexoCategoria}"/>
-	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}" 
-	                 action="#{categoriaManagedBean.salvar}"
-	                 update=":formCategoria, :tabelaCategoria"
-	                 />
-       </h:form>
-	
-   <p:dataTable value="#{categoriaManagedBean.categorias}"
-                var="aux"
-                id="tabelaCategoria"
-   >
-      <p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
-        <p:outputLabel value="#{aux.codigoCategoria}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.tipoCategoria']}">
-        <p:outputLabel value="#{aux.tipoCategoria}" />
-      </p:column>
-      <p:column headerText="#{msg['pages.cadastroCategoria.qntMinJogadores']}">
-        <p:outputLabel value="#{aux.qntMinJogadores}" />
-      </p:column>
-       <p:column headerText="#{msg['pages.cadastroCategoria.qntMaxJogadores']}">
-        <p:outputLabel value="#{aux.qntMinJogadores}" />
-      </p:column>
-       <p:column headerText="#{msg['pages.cadastroCategoria.sexoCategoria']}">
-        <p:outputLabel value="#{aux.sexoCategoria}" />
 
-      </p:column>
-      
-   </p:dataTable>	
-	   
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}" />
+		</h1>
+
+		<h:form id="formCategoria">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="#{msg['pages.cadastroCategoria.tipoCategoria']}" />
+				<p:inputText value="#{categoriaManagedBean.categoria.tipoCategoria}" />
+				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
+				<p:inputText value="#{categoriaManagedBean.categoria.qntMinJogadores}" />
+				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
+				<p:inputText value="#{categoriaManagedBean.categoria.qntMaxJogadores}" />
+				<p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
+				<p:inputText value="#{categoriaManagedBean.categoria.sexoCategoria}" />
+			</p:panelGrid>
+			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
+				action="#{categoriaManagedBean.salvar}"
+				update=":formCategoria, :tabelaCategoria" />
+		</h:form>
+
+		<p:dataTable value="#{categoriaManagedBean.categorias}" var="aux"
+			id="tabelaCategoria">
+			<p:column headerText="#{msg['pages.cadastroCategoria.tipoCategoria']}">
+				<p:outputLabel value="#{aux.tipoCategoria}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCategoria.qntMinJogadores']}">
+				<p:outputLabel value="#{aux.qntMinJogadores}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCategoria.qntMaxJogadores']}">
+				<p:outputLabel value="#{aux.qntMinJogadores}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCategoria.sexoCategoria']}">
+				<p:outputLabel value="#{aux.sexoCategoria}" />
+			</p:column>
+
+		</p:dataTable>
+
 	</ui:define>
 </ui:composition>
 

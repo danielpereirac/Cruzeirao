@@ -6,30 +6,31 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
-	
+
 	<ui:define name="title">
 		<h:outputText value="#{msg['pages.validacoes.title']}" />
 	</ui:define>
-	
+
 	<ui:define name="principal">
-	  
-	  <h1><p:outputLabel value="#{msg['pages.validacoes.menu']}"/></h1>
-	  
-	  <h:form id="formValidar">	
-	  <p:panelGrid columns="2">
-      <p:outputLabel value="Time A" />
-      <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
-	  <p:outputLabel value="Time B" />
-      <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
-      <p:outputLabel value="Time C" />
-      <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
-      <p:outputLabel value="Time D" />
-      <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
-	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.validacoes.btnAccept']}" 
-	                 action="#{validacaoManagedBean.salvar}"
-	                 />
-       </h:form>
-	   
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.validacoes.menu']}" />
+		</h1>
+
+		<h:form id="formValidar">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Time A" />
+				<p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
+				<p:outputLabel value="Time B" />
+				<p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
+				<p:outputLabel value="Time C" />
+				<p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
+				<p:outputLabel value="Time D" />
+				<p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
+			</p:panelGrid>
+			<p:commandButton value="#{msg['pages.validacoes.btnAccept']}"
+				action="#{validacaoManagedBean.salvar}" />
+		</h:form>
+
 	</ui:define>
 </ui:composition>
