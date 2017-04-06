@@ -7,7 +7,7 @@ public class Campeonato {
 	private String nomeCampeonato;
 	private int dataInicioCampeonato;
 	private int dataFimCampeonato;
-	private boolean inscricao;
+	private boolean inscricao = true;
 	private int periodoInicioInscricao;
 	private int periodoFimInscricao;
 	

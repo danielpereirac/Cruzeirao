@@ -29,6 +29,21 @@ public class CampeonatoManagedBean {
 		this.campeonatoAtual = campeonato;
 		return campeonatoAtual.isInscricao();
 	}
+	
+	public String voltar()
+	{
+		return "cadastroCampeonato";
+	}
+	
+	public void editarCampeonato(Campeonato campeonato)
+	{
+		
+	}
+	
+	public void removerCampeonato(Campeonato campeonato)
+	{
+		
+	}
 
 	public Campeonato getCampeonato() {
 		return campeonato;
