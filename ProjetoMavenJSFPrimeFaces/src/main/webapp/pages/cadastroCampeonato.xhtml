@@ -21,7 +21,7 @@
 			<p:panelGrid columns="2">
 			
 				<h:outputText value="#{msg['pages.cadastroCampeonato.inscricao']}" />
-        		<p:selectBooleanButton id="inscricao" value="#{campeonatoManagedBean.campeonato.inscricao}" 
+        		<p:selectBooleanButton id="inscricao" value="#{campeonatoManagedBean.campeonato.inscricao}"
         			onLabel="ON" offLabel="OFF" onIcon="" offIcon="" 
         			style="width:80px">
         		</p:selectBooleanButton>
@@ -42,38 +42,41 @@
 
 			<p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
 				action="#{campeonatoManagedBean.salvar}"
-				update=":formCampeonato, :tabelaCampeonato" />
+				update=":formCampeonato, :formTabelaCampeonato" />
 		</h:form>
 		
 		<br/>
-
-		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
-			id="tabelaCampeonato"
-			> 
-			
-			<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}">
-				<p:outputLabel value="#{aux.codigoCampeonato}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
-				<p:outputLabel value="#{aux.nomeCampeonato}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.descricao']}">
-				<p:link href="descricaoCampeonato.xhtml">Descricao</p:link>
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.categorias']}">
-				<p:link href="descricaoCampeonato.xhtml">Inscrever</p:link>
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.inscricao']}">
-				<p:selectBooleanButton value="#{aux.inscricao}" 
-        			onLabel="ON" offLabel="OFF" onIcon="" offIcon="" 
-        			style="width:80px">
-        		</p:selectBooleanButton>
-			</p:column>
-			
-			<p:column headerText="#{msg['pages.cadastroCampeonato.opcoes']}">
-			</p:column>
-			
-		</p:dataTable>
+	
+		<h:form id="formTabelaCampeonato">
+			<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
+				id="tabelaCampeonato"
+				> 
+				
+				<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}">
+					<p:outputLabel value="#{aux.codigoCampeonato}" />
+				</p:column>
+				<p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
+					<p:outputLabel value="#{aux.nomeCampeonato}" />
+				</p:column>
+				<p:column headerText="#{msg['pages.cadastroCampeonato.descricao']}">
+					<p:commandLink  action="#{campeonatoManagedBean.descricaoCampeonato(aux)}" value="Descricao"> </p:commandLink>
+				</p:column>
+				<p:column headerText="#{msg['pages.cadastroCampeonato.categorias']}">
+					<p:link href="descricaoCampeonato.xhtml">Inscrever</p:link>
+				</p:column>
+				<p:column headerText="#{msg['pages.cadastroCampeonato.inscricao']}">
+					<p:selectBooleanButton value="#{aux.inscricao}" action="#{campeonatoManagedBean.mostrarInscricao(aux)}"
+	        			onLabel="ON" offLabel="OFF" onIcon="" offIcon="" 
+	        			style="width:80px">
+	        		</p:selectBooleanButton>
+				</p:column>
+				
+				<p:column headerText="#{msg['pages.cadastroCampeonato.opcoes']}">
+					<p:commandLink  action="#{campeonatoManagedBean.editarCampeonato(aux)}" value="Editar / " update=":formTabelaCampeonato"> </p:commandLink>
+			    	<p:commandLink  action="#{campeonatoManagedBean.removerCampeonato(aux)}" value="Excluir" update=":formTabelaCampeonato"> </p:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:form>
 		
 		<br/>
 		<br/>

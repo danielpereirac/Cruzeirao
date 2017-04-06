@@ -16,6 +16,11 @@ public class CampeonatoService {
 	{
 	    campeonatos.add(campeonato);
 	}
+	
+	public void removerCampeonatos(Campeonato campeonato)
+	{
+		campeonatos.remove(campeonato);
+	}
 
 	public List <Campeonato> getCampeonatos()
 	{

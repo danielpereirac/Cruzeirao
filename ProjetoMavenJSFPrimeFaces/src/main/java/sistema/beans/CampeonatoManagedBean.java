@@ -35,14 +35,32 @@ public class CampeonatoManagedBean {
 		return "cadastroCampeonato";
 	}
 	
-	public void editarCampeonato(Campeonato campeonato)
+	public String editarCampeonato(Campeonato campeonato)
 	{
-		
+		this.campeonatoAtual = campeonato;
+		return "editarCampeonato";
 	}
 	
 	public void removerCampeonato(Campeonato campeonato)
 	{
-		
+		service.removerCampeonatos(campeonato);
+	}
+	
+	public String salvarEditar()
+	{
+		return "cadastroCampeonato";
+	}
+	
+	public String descricaoCampeonato(Campeonato campeonato)
+	{
+		this.campeonatoAtual = campeonato;
+		return "descricaoCampeonato";
+	}
+	
+	public boolean mostrarInscricao(Campeonato campeonato)
+	{
+		this.campeonatoAtual = campeonato;
+		return campeonatoAtual.isInscricao();
 	}
 
 	public Campeonato getCampeonato() {
