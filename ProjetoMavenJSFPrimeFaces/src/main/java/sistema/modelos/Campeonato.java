@@ -1,5 +1,7 @@
 package sistema.modelos;
 
+import java.util.ArrayList;
+
 public class Campeonato {
 
 	private int codigoCampeonato; 
@@ -10,11 +12,14 @@ public class Campeonato {
 	private boolean inscricao = true;
 	private int periodoInicioInscricao;
 	private int periodoFimInscricao;
+	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	
 	
 	public Campeonato(int codigo)
 	{
 		this.codigoCampeonato = codigo;
 	}
+	
 	
 	public int getCodigoCampeonato() {
 		return codigoCampeonato;
@@ -64,4 +69,10 @@ public class Campeonato {
 	public void setPeriodoFimInscricao(int periodoFimInscricao) {
 		this.periodoFimInscricao = periodoFimInscricao;
 	}
+	public ArrayList<Categoria> getCategorias() {
+		return categorias;
+	}
+	public void setCategorias(ArrayList<Categoria> categorias) {
+		this.categorias = categorias;
+	}	
 }

@@ -13,17 +13,41 @@ import sistema.service.UsuarioService;
 public class UsuarioManagedBean {
 	
 	private Usuario usuario = new Usuario();
+	private Usuario usuarioRecuperarSenha = new Usuario();
+	private Usuario usuarioEntrar = new Usuario();
 	private Usuario usuarioAtual;
 	private UsuarioService service = new UsuarioService();
 	
-	public void salvar()
+	public String salvar()
 	{
 		service.salvar(usuario);
 		usuario = new Usuario();
+		return "login";
+	}
+	
+	public String entrar()
+	{
+		if(service.entrar(usuarioEntrar))
+		{
+			usuarioEntrar = new Usuario();
+			return "inicio";
+		}
+		else
+		{
+			usuarioEntrar = new Usuario();
+			return "login";
+		}
 	}
 	
 	public String voltar()
 	{
+		return "login";
+	}
+	
+	public String recuperarSenha()
+	{
+		service.recuperarSenha(usuarioRecuperarSenha);
+		usuarioRecuperarSenha = new Usuario();
 		return "login";
 	}
 	
@@ -41,5 +65,21 @@ public class UsuarioManagedBean {
 	}
 	public void setUsuarioAtual(Usuario usuarioAtual) {
 		this.usuarioAtual = usuarioAtual;
+	}
+
+	public Usuario getUsuarioRecuperarSenha() {
+		return usuarioRecuperarSenha;
+	}
+
+	public void setUsuarioRecuperarSenha(Usuario usuarioRecuperarSenha) {
+		this.usuarioRecuperarSenha = usuarioRecuperarSenha;
+	}
+
+	public Usuario getUsuarioEntrar() {
+		return usuarioEntrar;
+	}
+
+	public void setUsuarioEntrar(Usuario usuarioEntrar) {
+		this.usuarioEntrar = usuarioEntrar;
 	}
 }

@@ -7,6 +7,14 @@ public class Categoria {
 	private int qntMinJogadores;
 	private int qntMaxJogadores;
 	private String sexoCategoria;
+	private Campeonato campeonato;
+	
+	
+	public Categoria()
+	{
+		
+	}
+	
 	
 	public int getCodigoCategoria() {
 		return codigoCategoria;
@@ -37,5 +45,11 @@ public class Categoria {
 	}
 	public void setSexoCategoria(String sexoCategoria) {
 		this.sexoCategoria = sexoCategoria;
+	}
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
 	}
 }
