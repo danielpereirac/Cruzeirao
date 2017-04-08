@@ -22,12 +22,6 @@
 			<p:panelGrid columns="2">
 				<p:outputLabel value="#{msg['pages.cadastroTime.nome']}" />
 				<p:inputText value="#{timeManagedBean.time.nome}" />
-				<p:outputLabel value="#{msg['pages.cadastroTime.tecnico']}" />
-				<p:inputText value="#{timeManagedBean.time.tecnico}" />
-				<p:outputLabel value="#{msg['pages.cadastroTime.categoria']}" />
-				<p:inputText value="#{timeManagedBean.time.categoria}" />
-				<p:outputLabel value="#{msg['pages.cadastroTime.jogadores']}" />
-				<p:inputText value="#{timeManagedBean.time.jogador}" />
 			</p:panelGrid>
 			<p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}"
 				action="#{timeManagedBean.salvar}" update=":formTime, :tabelaTime" />
@@ -38,18 +32,18 @@
 			<p:column headerText="#{msg['pages.cadastroTime.nome']}">
 				<p:outputLabel value="#{aux.nome}" />
 			</p:column>
-			<p:column headerText="#{msg['pages.cadastroTime.tecnico']}">
-				<p:outputLabel value="#{aux.tecnico}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroTime.categoria']}">
-				<p:outputLabel value="#{aux.categoria}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroTime.jogadores']}">
-				<p:outputLabel value="#{aux.jogador}" />
-			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.descricao']}">
+					<p:commandLink  action="#{timeManagedBean.descricaoTime(aux)}" value="Descricao / Description"> </p:commandLink>
+				</p:column>
 			<p:column headerText="#{msg['pages.inscricao.title1']}">
 				<p:link href="inscricaoTime.xhtml">Inscrição</p:link>
 			</p:column>
+			
+			
+			<p:column headerText="#{msg['pages.cadastroTime.opcoes']}">
+					<p:commandLink  action="#{timeManagedBean.editarTime(aux)}" value="Editar / Edit " update=":formTabelaTime"> </p:commandLink>
+			    	<p:commandLink  action="#{timeManagedBean.removerTime(aux)}" value="Excluir / Delete" update=":formTabelaTime"> </p:commandLink>
+				</p:column>
 
 		</p:dataTable>
 

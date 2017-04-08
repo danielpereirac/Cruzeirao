@@ -14,6 +14,7 @@ public class TimeManagedBean {
 	
 	private Time time = new Time();
 	private TimeService service = new TimeService();
+	private Time timeAtual;
 	
 	public void salvar()
 	{
@@ -32,4 +33,42 @@ public class TimeManagedBean {
 	public List<Time> getTimes() {
 		return service.getTimes();
 	}
+	
+	public String descricaoTime(Time time)
+	{
+		this.timeAtual = time;
+		return "descricaoTime";
+	}
+	
+	public String editarTime(Time time)
+	{
+		this.timeAtual = time;
+		return "editarTime";
+	}
+	public String voltar()
+	{
+		return "cadastroTime";
+	}
+
+	public TimeService getService() {
+		return service;
+	}
+
+	public void setService(TimeService service) {
+		this.service = service;
+	}
+
+	public Time getTimeAtual() {
+		return timeAtual;
+	}
+
+	public void setTimeAtual(Time timeAtual) {
+		this.timeAtual = timeAtual;
+	}
+	
+	public void removerTime(Time time)
+	{
+		service.removerTime(time);
+	}
+	
 }

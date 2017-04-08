@@ -38,4 +38,9 @@ public class Time {
 	public void setJogador(String jogador) {
 		this.jogador = jogador;
 	}
+	public String salvarEditar()
+	{
+		return "cadastroTime";
+	}
+	
 }

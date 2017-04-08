@@ -1,11 +1,13 @@
 package sistema.beans;
 
+
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Campeonato;
+
 import sistema.service.CampeonatoService;
 
 @ManagedBean
@@ -23,7 +25,11 @@ public class CampeonatoManagedBean {
 		codigoCampeonato++;
 		campeonato = new Campeonato(codigoCampeonato);	
 	}
-	
+	public String inserirCategorias (Campeonato campeonato)
+	{
+		this.campeonatoAtual = campeonato;
+		return "inserirCategorias";
+	}
 	public String voltar()
 	{
 		return "cadastroCampeonato";

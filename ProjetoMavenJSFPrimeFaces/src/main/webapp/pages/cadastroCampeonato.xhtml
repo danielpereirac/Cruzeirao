@@ -58,10 +58,11 @@
 					<p:outputLabel value="#{aux.nomeCampeonato}" />
 				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCampeonato.descricao']}">
-					<p:commandLink  action="#{campeonatoManagedBean.descricaoCampeonato(aux)}" value="Descricao"> </p:commandLink>
+					<p:commandLink  action="#{campeonatoManagedBean.descricaoCampeonato(aux)}" value="Descricao / Description"> </p:commandLink>
 				</p:column>
+				
 				<p:column headerText="#{msg['pages.cadastroCampeonato.categorias']}">
-					<p:link href="descricaoCampeonato.xhtml">Inscrever</p:link>
+					<p:commandLink  action="#{campeonatoManagedBean.inserirCategorias(aux)}" value="Inserir Categoria / Insert Category " update=":formTabelaCampeonato"> </p:commandLink>
 				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCampeonato.inscricao']}">
 					<p:selectBooleanButton value="#{aux.inscricao}" action="#{campeonatoManagedBean.mostrarInscricao(aux)}"
@@ -71,8 +72,8 @@
 				</p:column>
 				
 				<p:column headerText="#{msg['pages.cadastroCampeonato.opcoes']}">
-					<p:commandLink  action="#{campeonatoManagedBean.editarCampeonato(aux)}" value="Editar / " update=":formTabelaCampeonato"> </p:commandLink>
-			    	<p:commandLink  action="#{campeonatoManagedBean.removerCampeonato(aux)}" value="Excluir" update=":formTabelaCampeonato"> </p:commandLink>
+					<p:commandLink  action="#{campeonatoManagedBean.editarCampeonato(aux)}" value="Editar / Edit " update=":formTabelaCampeonato"> </p:commandLink>
+			    	<p:commandLink  action="#{campeonatoManagedBean.removerCampeonato(aux)}" value="Excluir / Delete" update=":formTabelaCampeonato"> </p:commandLink>
 				</p:column>
 			</p:dataTable>
 		</h:form>

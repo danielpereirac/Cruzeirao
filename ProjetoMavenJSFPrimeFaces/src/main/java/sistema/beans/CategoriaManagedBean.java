@@ -40,15 +40,31 @@ public class CategoriaManagedBean {
 		service.removerCategoria(categoria);
 	}
 	
+	public void removerCategoria2(Categoria categoria)
+	{
+		service.removerCategoria(categoria);
+	}
+	
 	public String descricaoCategoria(Categoria categoria)
 	{
 		this.categoriaAtual = categoria;
 		return "descricaoCategoria";
 	}
 	
+	public String descricaoCategoria2 (Categoria categoria)
+	{
+		this.categoriaAtual = categoria;
+		return "descricaoCategoria2";
+	}
+	
 	public String voltar()
 	{
 		return "cadastroCategoria";
+	}
+	
+	public String voltar2()
+	{
+		return "inserirCategorias";
 	}
 	
 	

@@ -22,4 +22,9 @@ public class TimeService {
 	{
 		return times;
 	}
+
+	public void removerTime(Time time) {
+		// TODO Auto-generated method stub
+		times.remove(time);
+	}
 }
