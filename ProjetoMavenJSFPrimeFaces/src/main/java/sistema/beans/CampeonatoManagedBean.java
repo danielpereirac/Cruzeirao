@@ -24,12 +24,6 @@ public class CampeonatoManagedBean {
 		campeonato = new Campeonato(codigoCampeonato);	
 	}
 	
-	public boolean inscricao(Campeonato campeonato)
-	{
-		this.campeonatoAtual = campeonato;
-		return campeonatoAtual.isInscricao();
-	}
-	
 	public String voltar()
 	{
 		return "cadastroCampeonato";

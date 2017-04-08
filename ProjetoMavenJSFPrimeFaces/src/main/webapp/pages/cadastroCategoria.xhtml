@@ -20,36 +20,59 @@
 
 		<h:form id="formCategoria">
 			<p:panelGrid columns="2">
+			
+				<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
+				<p:selectOneMenu id="campeonato" value="#{categoriaManagedBean.categoria.campeonato}">
+            		<f:selectItem itemLabel="Select" itemValue="" />
+            		<f:selectItem itemLabel="A" itemValue="A" />
+            		<f:selectItem itemLabel="B" itemValue="B" />
+        		</p:selectOneMenu>
+			
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.tipoCategoria']}" />
 				<p:inputText value="#{categoriaManagedBean.categoria.tipoCategoria}" />
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
 				<p:inputText value="#{categoriaManagedBean.categoria.qntMinJogadores}" />
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
 				<p:inputText value="#{categoriaManagedBean.categoria.qntMaxJogadores}" />
+				
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
-				<p:inputText value="#{categoriaManagedBean.categoria.sexoCategoria}" />
+				<p:selectOneMenu id="sexo" value="#{categoriaManagedBean.categoria.sexoCategoria}">
+            		<f:selectItem itemLabel="Select" itemValue="" />
+            		<f:selectItem itemLabel="Male" itemValue="Male" />
+            		<f:selectItem itemLabel="Female" itemValue="Female" />
+        		</p:selectOneMenu>
+        	
 			</p:panelGrid>
 			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
 				action="#{categoriaManagedBean.salvar}"
-				update=":formCategoria, :tabelaCategoria" />
+				update=":formCategoria, :formTabelaCategoria" />
 		</h:form>
+		
+		<br/>
 
+		<h:form id="formTabelaCategoria">
 		<p:dataTable value="#{categoriaManagedBean.categorias}" var="aux"
 			id="tabelaCategoria">
+			<p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
+				<p:outputLabel value="#{aux.codigoCategoria}" />
+			</p:column>
 			<p:column headerText="#{msg['pages.cadastroCategoria.tipoCategoria']}">
 				<p:outputLabel value="#{aux.tipoCategoria}" />
 			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCategoria.qntMinJogadores']}">
-				<p:outputLabel value="#{aux.qntMinJogadores}" />
+			<p:column headerText="#{msg['pages.cadastroCategoria.descricao']}">
+				<p:commandLink  action="#{categoriaManagedBean.descricaoCategoria(aux)}" value="Descricao"> </p:commandLink>
 			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCategoria.qntMaxJogadores']}">
-				<p:outputLabel value="#{aux.qntMinJogadores}" />
+			<p:column headerText="#{msg['pages.cadastroCategoria.campeonato']}">
+				<p:outputLabel value="#{aux.campeonato}" />
 			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCategoria.sexoCategoria']}">
-				<p:outputLabel value="#{aux.sexoCategoria}" />
+			
+			<p:column headerText="#{msg['pages.cadastroCategoria.opcoes']}">
+				<p:commandLink  action="#{categoriaManagedBean.editarCategoria(aux)}" value="Editar / " update=":formTabelaCategoria"> </p:commandLink>
+			   	<p:commandLink  action="#{categoriaManagedBean.removerCategoria(aux)}" value="Excluir" update=":formTabelaCategoria"> </p:commandLink>
 			</p:column>
-
+			
 		</p:dataTable>
+		</h:form>
 
 	</ui:define>
 </ui:composition>

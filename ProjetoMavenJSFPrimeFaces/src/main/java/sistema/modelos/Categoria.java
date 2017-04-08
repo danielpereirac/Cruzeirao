@@ -10,9 +10,9 @@ public class Categoria {
 	private Campeonato campeonato;
 	
 	
-	public Categoria()
+	public Categoria(int codigoCategoria)
 	{
-		
+		this.codigoCategoria = codigoCategoria;
 	}
 	
 	

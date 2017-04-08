@@ -9,12 +9,18 @@ public class CategoriaService {
 	private ArrayList <Categoria> categorias = new ArrayList<Categoria>();
 	
 	public CategoriaService()
-	{
+	{ 
+		
 	}
 	
 	public void salvar(Categoria categoria)
 	{
 	    categorias.add(categoria);
+	}
+	
+	public void removerCategoria(Categoria categoria)
+	{
+		categorias.remove(categoria);
 	}
 
 	public List<Categoria> getCategorias()

@@ -49,9 +49,8 @@
 	
 		<h:form id="formTabelaCampeonato">
 			<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
-				id="tabelaCampeonato"
-				> 
-				
+				id="tabelaCampeonato" > 
+		
 				<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}">
 					<p:outputLabel value="#{aux.codigoCampeonato}" />
 				</p:column>
@@ -83,9 +82,7 @@
 		<br/>
 		
 		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
-			id="tabelaCategoria" selectionMode="single" 
-			selection="#{representanteManagedBean.representanteSelecionado}"  
-			rowKey="#{r.numero}">
+			id="tabelaCategoria">
 			
 			<p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
 				<p:outputLabel value="#{aux.nomeCampeonato}" />
