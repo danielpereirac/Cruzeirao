@@ -22,7 +22,7 @@
 			<p:panelGrid columns="2">
 			
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
-				<p:selectOneMenu id="campeonato" value="#{campeonatoManagedBean.campeonatos}">
+				<p:selectOneMenu id="Campeonato" value="#{campeonatoManagedBean.campeonato.nomeCampeonato}">
             		<f:selectItem itemLabel="Select" itemValue="" />
             		<f:selectItem itemLabel="A" itemValue="A" />
             		<f:selectItem itemLabel="B" itemValue="B" />
@@ -63,7 +63,7 @@
 				<p:commandLink  action="#{categoriaManagedBean.descricaoCategoria(aux)}" value="Descricao"> </p:commandLink>
 			</p:column>
 			<p:column headerText="#{msg['pages.cadastroCategoria.campeonato']}">
-				<p:outputLabel value="#{aux.campeonato}" />
+				<p:outputLabel value="#{aux.getCampeonato().getNomeCampeonato()}" />
 			</p:column>
 			
 			<p:column headerText="#{msg['pages.cadastroCategoria.opcoes']}">

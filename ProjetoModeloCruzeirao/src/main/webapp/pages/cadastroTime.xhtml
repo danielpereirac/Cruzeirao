@@ -24,9 +24,10 @@
 				<p:inputText value="#{timeManagedBean.time.nome}" />
 			</p:panelGrid>
 			<p:commandButton value="#{msg['pages.cadastroTime.btnSalvar']}"
-				action="#{timeManagedBean.salvar}" update=":formTime, :tabelaTime" />
+				action="#{timeManagedBean.salvar}" update=":formTime, :formTabelaTime" />
 		</h:form>
 
+<h:form id = "formTabelaTime"> 
 		<p:dataTable value="#{timeManagedBean.times}" var="aux"
 			id="tabelaTime">
 			<p:column headerText="#{msg['pages.cadastroTime.nome']}">
@@ -46,6 +47,7 @@
 				</p:column>
 
 		</p:dataTable>
+		</h:form>
 
 	</ui:define>
 </ui:composition>
