@@ -21,6 +21,11 @@ public class TimeManagedBean {
 		service.salvar(time);
 		time = new Time();	
 	}
+	
+	public String salvarEditar()
+	{
+		return "cadastroTime";
+	}
 
 	public Time getTime() {
 		return time;
