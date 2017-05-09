@@ -38,6 +38,8 @@
 				<p:inputText value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" />
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
 				<p:inputText value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" />
+				<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
+				<p:inputText value="#{campeonatoManagedBean.campeonato.valorTaxa}" />
 			</p:panelGrid>
 
 			<p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
@@ -72,7 +74,7 @@
 				</p:column>
 				
 				<p:column headerText="#{msg['pages.cadastroCampeonato.opcoes']}">
-					<p:commandLink  action="#{campeonatoManagedBean.editarCampeonato(aux)}" value="Editar" update=":formTabelaCampeonato"> </p:commandLink>
+					<p:commandLink  action="#{campeonatoManagedBean.editarCampeonato(aux)}" value="Editar / " update=":formTabelaCampeonato"> </p:commandLink>
 			    	<p:commandLink  action="#{campeonatoManagedBean.removerCampeonato(aux)}" value="Excluir" update=":formTabelaCampeonato"> </p:commandLink>
 				</p:column>
 			</p:dataTable>

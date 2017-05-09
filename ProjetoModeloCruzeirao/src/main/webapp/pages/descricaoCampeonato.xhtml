@@ -27,9 +27,11 @@
 			<p:outputLabel value="#{msg['pages.cadastroCampeonato.fim']}" />
 			<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.dataFimCampeonato}" />
 			<p:outputLabel value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
-			<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.periodoInicioInscricao}" />
+			<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.dataInicioInscricao}" />
 			<p:outputLabel value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
-			<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.periodoFimInscricao}" />
+			<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.dataFimInscricao}" />
+			<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
+			<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.valorTaxa}" />
 		</p:panelGrid>
 		
 		<p:commandButton value="#{msg['pages.cadastroCampeonato.btnVoltar']}"
