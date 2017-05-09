@@ -14,7 +14,7 @@ import sistema.service.CategoriaService;
 public class CategoriaManagedBean {
 	
 	private int codigoCategoria = 1;
-	private Categoria categoria = new Categoria(codigoCategoria);
+	private Categoria categoria = new Categoria();
 	private Categoria categoriaAtual;
 	private CampeonatoManagedBean campeonato;
 	private CategoriaService service = new CategoriaService();
@@ -27,7 +27,7 @@ public class CategoriaManagedBean {
 		
 		service.salvar(categoria);
 		codigoCategoria++;
-		categoria = new Categoria(codigoCategoria);
+		categoria = new Categoria();
 	}
 	
 	public String salvarEditar()
