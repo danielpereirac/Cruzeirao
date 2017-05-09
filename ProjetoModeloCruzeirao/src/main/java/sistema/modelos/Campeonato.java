@@ -1,19 +1,22 @@
 package sistema.modelos;
 
-import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Campeonato {
 
 	private int codigoCampeonato; 
-	private int anoCampeonato;
 	private String nomeCampeonato;
-	private int dataInicioCampeonato;
-	private int dataFimCampeonato;
+	private List<Local> locais;
+	private List<Juiz> juizes;
+	private List<Categoria> categorias;
+	private Date dataInicioInscricao;
+	private Date dataFimInscricao;
+	private int anoCampeonato;
 	private boolean inscricao = true;
-	private int periodoInicioInscricao;
-	private int periodoFimInscricao;
-	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-	
+	private Date dataInicioCampeonato;
+	private Date dataFimCampeonato;
+	private double valorTaxa;
 	
 	public Campeonato(int codigo)
 	{
@@ -27,29 +30,47 @@ public class Campeonato {
 	public void setCodigoCampeonato(int codigoCampeonato) {
 		this.codigoCampeonato = codigoCampeonato;
 	}
-	public int getAnoCampeonato() {
-		return anoCampeonato;
-	}
-	public void setAnoCampeonato(int anoCampeonato) {
-		this.anoCampeonato = anoCampeonato;
-	}
 	public String getNomeCampeonato() {
 		return nomeCampeonato;
 	}
 	public void setNomeCampeonato(String nomeCampeonato) {
 		this.nomeCampeonato = nomeCampeonato;
 	}
-	public int getDataInicioCampeonato() {
-		return dataInicioCampeonato;
+	public List<Local> getLocais() {
+		return locais;
 	}
-	public void setDataInicioCampeonato(int dataInicioCampeonato) {
-		this.dataInicioCampeonato = dataInicioCampeonato;
+	public void setLocais(List<Local> locais) {
+		this.locais = locais;
 	}
-	public int getDataFimCampeonato() {
-		return dataFimCampeonato;
+	public List<Juiz> getJuizes() {
+		return juizes;
 	}
-	public void setDataFimCampeonato(int dataFimCampeonato) {
-		this.dataFimCampeonato = dataFimCampeonato;
+	public void setJuizes(List<Juiz> juizes) {
+		this.juizes = juizes;
+	}
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	public Date getDataInicioInscricao() {
+		return dataInicioInscricao;
+	}
+	public void setDataInicioInscricao(Date dataInicioInscricao) {
+		this.dataInicioInscricao = dataInicioInscricao;
+	}
+	public Date getDataFimInscricao() {
+		return dataFimInscricao;
+	}
+	public void setDataFimInscricao(Date dataFimInscricao) {
+		this.dataFimInscricao = dataFimInscricao;
+	}
+	public int getAnoCampeonato() {
+		return anoCampeonato;
+	}
+	public void setAnoCampeonato(int anoCampeonato) {
+		this.anoCampeonato = anoCampeonato;
 	}
 	public boolean isInscricao() {
 		return inscricao;
@@ -57,22 +78,22 @@ public class Campeonato {
 	public void setInscricao(boolean inscricao) {
 		this.inscricao = inscricao;
 	}
-	public int getPeriodoInicioInscricao() {
-		return periodoInicioInscricao;
+	public Date getDataInicioCampeonato() {
+		return dataInicioCampeonato;
 	}
-	public void setPeriodoInicioInscricao(int periodoInicioInscricao) {
-		this.periodoInicioInscricao = periodoInicioInscricao;
+	public void setDataInicioCampeonato(Date dataInicioCampeonato) {
+		this.dataInicioCampeonato = dataInicioCampeonato;
 	}
-	public int getPeriodoFimInscricao() {
-		return periodoFimInscricao;
+	public Date getDataFimCampeonato() {
+		return dataFimCampeonato;
 	}
-	public void setPeriodoFimInscricao(int periodoFimInscricao) {
-		this.periodoFimInscricao = periodoFimInscricao;
+	public void setDataFimCampeonato(Date dataFimCampeonato) {
+		this.dataFimCampeonato = dataFimCampeonato;
 	}
-	public ArrayList<Categoria> getCategorias() {
-		return categorias;
+	public double getValorTaxa() {
+		return valorTaxa;
 	}
-	public void setCategorias(ArrayList<Categoria> categorias) {
-		this.categorias = categorias;
-	}	
+	public void setValorTaxa(double valorTaxa) {
+		this.valorTaxa = valorTaxa;
+	}
 }
