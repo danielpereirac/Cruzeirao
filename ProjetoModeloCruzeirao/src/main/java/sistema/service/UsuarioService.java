@@ -21,9 +21,12 @@ public class UsuarioService {
 	
 	public boolean entrar(Usuario usuario)
 	{
-		if((usuarios.equals(usuario.getNome()) || usuarios.equals(usuario.getEmail())) && usuarios.equals(usuario.getSenha()))
+		
+		for(Usuario aux: usuarios){
+		if(aux.getNomeUsuario()==usuario.getNomeUsuario()&& aux.getSenha()==usuario.getSenha())
+			
 			return true;
-		else
+		}
 			return false;
 	}
 	
@@ -32,7 +35,7 @@ public class UsuarioService {
 					
 	}
 
-	public List <Usuario> getUsuarios()
+	public ArrayList <Usuario> getUsuarios()
 	{
 		return usuarios;
 	}

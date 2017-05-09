@@ -3,12 +3,22 @@ package sistema.modelos;
 public class Usuario {
 	
 	private String nome;
+	private String nomeUsuario;
 	private String senha;
 	private String email;
 	private String rg;
 	private String cpf;
 	private String dataNascimento;
 	
+	
+	
+	
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
 	public String getNome() {
 		return nome;
 	}
