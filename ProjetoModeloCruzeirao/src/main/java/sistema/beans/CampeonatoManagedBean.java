@@ -1,17 +1,22 @@
 package sistema.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
+
 import sistema.modelos.Campeonato;
 
 import sistema.service.CampeonatoService;
 
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
-public class CampeonatoManagedBean {
+public class CampeonatoManagedBean implements Serializable {
 	private int codigoCampeonato = 1;
 	private Campeonato campeonato = new Campeonato(codigoCampeonato);
 	private Campeonato campeonatoAtual;
@@ -20,14 +25,14 @@ public class CampeonatoManagedBean {
 	public int getId() {
 		List<Campeonato> lista = service.getCampeonatos();
 
-		Campeonato c = new Campeonato(); 
-		if (lista == null)
-			return 1;
-
-		else {
+		Campeonato c = new Campeonato();
+		if (!(lista.isEmpty())) {
 			c = lista.get(lista.size() - 1);
-			return c.getCodigoCampeonato()+1;
+			return c.getCodigoCampeonato() + 1;
 		}
+
+		else
+			return 1;
 	}
 
 	public void salvar() {
@@ -67,7 +72,28 @@ public class CampeonatoManagedBean {
 
 	public boolean mostrarInscricao(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
+		service.alterarCampeonato(campeonatoAtual);
 		return campeonatoAtual.isInscricao();
+	}
+
+	public String descricaoCategoria(Campeonato campeonato) {
+		this.campeonatoAtual = campeonato;
+		return "descricaoCategoria3";
+	}
+
+	public String voltarCategoria() {
+		return "cadastroCampeonato";
+	}
+
+	public void onCellEdit(CellEditEvent event) {
+		boolean newValue = ((boolean) event.getNewValue());
+		campeonatoAtual.setInscricao(newValue);
+		service.alterarCampeonato(campeonatoAtual);
+	}
+
+	public void onRowEdit(RowEditEvent event) {
+		Campeonato c = ((Campeonato) event.getObject());
+		service.alterarCampeonato(c);
 	}
 
 	public Campeonato getCampeonato() {
