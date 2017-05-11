@@ -1,6 +1,5 @@
 package sistema.beans;
 
-
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -13,52 +12,60 @@ import sistema.service.CampeonatoService;
 @ManagedBean
 @SessionScoped
 public class CampeonatoManagedBean {
-	
 	private int codigoCampeonato = 1;
 	private Campeonato campeonato = new Campeonato(codigoCampeonato);
 	private Campeonato campeonatoAtual;
 	private CampeonatoService service = new CampeonatoService();
-	
-	public void salvar()
-	{
-		service.salvar(campeonato);
-		codigoCampeonato++;
-		campeonato = new Campeonato(codigoCampeonato);	
+
+	public int getId() {
+		List<Campeonato> lista = service.getCampeonatos();
+
+		Campeonato c = new Campeonato(); 
+		if (lista == null)
+			return 1;
+
+		else {
+			c = lista.get(lista.size() - 1);
+			return c.getCodigoCampeonato()+1;
+		}
 	}
-	public String inserirCategorias (Campeonato campeonato)
-	{
+
+	public void salvar() {
+		codigoCampeonato = getId();
+		campeonato.setCodigoCampeonato(codigoCampeonato);
+		service.salvar(campeonato);
+		campeonato = new Campeonato(codigoCampeonato);
+	}
+
+	public String inserirCategorias(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return "inserirCategorias";
 	}
-	public String voltar()
-	{
+
+	public String voltar() {
 		return "cadastroCampeonato";
 	}
-	
-	public String editarCampeonato(Campeonato campeonato)
-	{
+
+	public String editarCampeonato(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return "editarCampeonato";
 	}
-	
-	public void removerCampeonato(Campeonato campeonato)
-	{
+
+	public void removerCampeonato(Campeonato campeonato) {
 		service.removerCampeonatos(campeonato);
 	}
-	
-	public String salvarEditar()
-	{
+
+	public String salvarEditar() {
+		service.alterarCampeonato(campeonatoAtual);
 		return "cadastroCampeonato";
 	}
-	
-	public String descricaoCampeonato(Campeonato campeonato)
-	{
+
+	public String descricaoCampeonato(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return "descricaoCampeonato";
 	}
-	
-	public boolean mostrarInscricao(Campeonato campeonato)
-	{
+
+	public boolean mostrarInscricao(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return campeonatoAtual.isInscricao();
 	}
