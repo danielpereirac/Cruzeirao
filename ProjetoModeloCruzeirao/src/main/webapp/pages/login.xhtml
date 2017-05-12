@@ -21,12 +21,12 @@
 		<h:form id="formLogin">
 			<p:panelGrid columns="2">
 				<p:outputLabel value="#{msg['pages.login.nome']}" />
-				<p:inputText value="#{loginManagedBean.usuario.nomeUsuario}" />
+				<p:inputText value="#{usuarioManagedBean.usuario.nome}" />
 				<p:outputLabel value="#{msg['pages.login.senha']}" />
-				<p:inputText value="#{loginManagedBean.usuario.senha}" />
+				<p:inputText value="#{usuarioManagedBean.usuario.senha}" />
 			</p:panelGrid>
 			<p:commandButton value="#{msg['pages.login.btnEntrar']}"
-				action="#{loginManagedBean.entrar}" />
+				action="#{usuarioManagedBean.entrar}" />
 			<br />
 
 			<p:link href="cadastroUsuario.xhtml">Cadastre-se /</p:link>

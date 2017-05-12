@@ -9,9 +9,8 @@ import javax.persistence.Id;
 @Entity
 public class Usuario implements Serializable{
 	
-	@id
+	@Id
 	private String nome;
-	private String nomeUsuario;
 	private String senha;
 	private String email;
 	private String rg;
@@ -24,12 +23,21 @@ public class Usuario implements Serializable{
 	private List <Inscrito> incricoes;
 	private List <Equipe> equipes;
 	private String foto;
-	private Enum sexo ;
+	private String sexo ;
 	private String cref;
 	
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public Usuario()
 	{
-		
+	
 	}
 	
 	public String getEndereco() {
@@ -74,30 +82,24 @@ public class Usuario implements Serializable{
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	public Enum getSexo() {
+
+	
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(Enum sexo) {
+
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+
 	public String getCref() {
 		return cref;
 	}
 	public void setCref(String cref) {
 		this.cref = cref;
 	}
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	
+	
 	public String getSenha() {
 		return senha;
 	}
