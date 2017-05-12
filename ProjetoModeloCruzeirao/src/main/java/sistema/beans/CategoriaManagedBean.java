@@ -1,33 +1,43 @@
 package sistema.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
 import sistema.service.CategoriaService;
 
+@SuppressWarnings("serial")
 @ManagedBean
 @SessionScoped
-public class CategoriaManagedBean {
+public class CategoriaManagedBean implements Serializable {
 	
 	private int codigoCategoria = 1;
-	private Categoria categoria = new Categoria();
+	private Categoria categoria = new Categoria(codigoCategoria);
 	private Categoria categoriaAtual;
-	private CampeonatoManagedBean campeonato;
 	private CategoriaService service = new CategoriaService();
 	
-	
-	
+	public int getId() {
+		List<Categoria> lista = service.getCategorias();
 
+		Categoria c = new Categoria();
+		if (!(lista.isEmpty())) {
+			c = lista.get(lista.size() - 1);
+			return c.getCodigoCategoria() + 1;
+		}
+
+		else
+			return 1;
+	}
+	
 	public void salvar()
 	{
-		
+		codigoCategoria = getId();
+		categoria.setCodigoCategoria(codigoCategoria);
 		service.salvar(categoria);
-		codigoCategoria++;
-		categoria = new Categoria();
+		categoria = new Categoria(codigoCategoria);
 	}
 	
 	public String salvarEditar()

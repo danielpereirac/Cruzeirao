@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @SuppressWarnings("serial")
 @Entity
@@ -15,6 +16,8 @@ public class Campeonato implements Serializable {
 	private String nomeCampeonato;
 	private List<Local> locais;
 	private List<Juiz> juizes;
+	
+	@OneToMany(mappedBy="campeonato")
 	private List<Categoria> categorias;
 	private Date dataInicioInscricao;
 	private Date dataFimInscricao;
@@ -28,6 +31,7 @@ public class Campeonato implements Serializable {
 	}
 	
 	public Campeonato(int codigo){
+		super();
 		this.codigoCampeonato = codigo;
 		dataInicioInscricao = new Date();
 		dataInicioCampeonato = new Date();
