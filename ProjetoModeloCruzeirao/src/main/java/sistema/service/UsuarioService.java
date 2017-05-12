@@ -3,11 +3,15 @@ package sistema.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import sistema.modelos.Campeonato;
 import sistema.modelos.Usuario;
 
-public class UsuarioService {
+public class UsuarioService extends Service {
 	
-	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	private List<Usuario> usuarios;
 	
 	public UsuarioService()
 	{
@@ -16,27 +20,34 @@ public class UsuarioService {
 	
 	public void salvar(Usuario usuario) 
 	{
-		usuarios.add(usuario);
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(usuario);
+		em.getTransaction().commit();
+		em.close();
 	}
 	
-	public boolean entrar(Usuario usuario)
-	{
-		
-		for(Usuario aux: usuarios){
-		if(aux.getNomeUsuario()==usuario.getNomeUsuario()&& aux.getSenha()==usuario.getSenha())
-			
-			return true;
-		}
-			return false;
-	}
 	
 	public void recuperarSenha(Usuario usuario)
 	{
 					
 	}
 
-	public ArrayList <Usuario> getUsuarios()
-	{
+	
+	@SuppressWarnings("unchecked")
+	public List<Usuario> getUsuarios() {
+		
+		List<Usuario> usuarios;
+
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select c From Campeonato c");
+		usuarios = q.getResultList();
+		em.close();
+
 		return usuarios;
+	}
+
+	public void entrar(Usuario usuarioEntrar) {
+		
 	}
 }

@@ -1,5 +1,8 @@
 package sistema.beans;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -10,13 +13,16 @@ import sistema.service.UsuarioService;
 
 @ManagedBean
 @SessionScoped
-public class UsuarioManagedBean {
+public class UsuarioManagedBean implements Serializable {
 	
 	private Usuario usuario = new Usuario();
 	private Usuario usuarioRecuperarSenha = new Usuario();
 	private Usuario usuarioEntrar = new Usuario();
+	private Boolean permissao = false;
 	private Usuario usuarioAtual;
 	private UsuarioService service = new UsuarioService();
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
+
 	
 	public String salvar()
 	{
@@ -27,16 +33,19 @@ public class UsuarioManagedBean {
 	
 	public String entrar()
 	{
-		if(service.entrar(usuarioEntrar))
+		service.getUsuarios();
+		for(Usuario aux: usuarios)
 		{
-			usuarioEntrar = new Usuario();
-			return "inicio";
+			if((aux.getNomeUsuario()==usuarioEntrar.getNome())&&(aux.getSenha()==usuario.getSenha()))
+			{
+				permissao = true;
+			}
+			
 		}
+		if(permissao==true)
+		return "paginaInicial";
 		else
-		{
-			usuarioEntrar = new Usuario();
-			return "login";
-		}
+		return null;
 	}
 	
 	public String voltar()
