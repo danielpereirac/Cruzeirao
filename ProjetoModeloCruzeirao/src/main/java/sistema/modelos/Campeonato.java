@@ -29,6 +29,8 @@ public class Campeonato implements Serializable {
 	
 	public Campeonato(int codigo){
 		this.codigoCampeonato = codigo;
+		dataInicioInscricao = new Date();
+		dataInicioCampeonato = new Date();
 	}
 
 	public int getCodigoCampeonato() {

@@ -27,24 +27,23 @@
 				</p:selectBooleanButton>
 
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
-				<p:inputText
-					value="#{campeonatoManagedBean.campeonato.nomeCampeonato}" />
+				<p:inputText value="#{campeonatoManagedBean.campeonato.nomeCampeonato}" />
+				
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.ano']}" />
-				<p:inputText
-					value="#{campeonatoManagedBean.campeonato.anoCampeonato}" />
-				<p:outputLabel value="#{msg['pages.cadastroCampeonato.inicio']}" />
-				<p:inputText
-					value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" />
-				<p:outputLabel value="#{msg['pages.cadastroCampeonato.fim']}" />
-				<p:inputText
-					value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" />
-				<p:outputLabel
-					value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
-				<p:inputText
-					value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" />
-				<p:outputLabel value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
-				<p:inputText
-					value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" />
+				<p:inputText value="#{campeonatoManagedBean.campeonato.anoCampeonato}" />
+					
+				<p:outputLabel for="button" value="#{msg['pages.cadastroCampeonato.inicio']}" />
+        		<p:calendar id="button" value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" showOn="button" pattern="dd-MM-yyyy" />
+				
+				<p:outputLabel for="button1" value="#{msg['pages.cadastroCampeonato.fim']}" />
+        		<p:calendar id="button1" value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" showOn="button" pattern="dd-MM-yyyy" />
+				
+				<p:outputLabel for="button2" value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
+        		<p:calendar id="button2" value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" showOn="button" pattern="dd-MM-yyyy" />
+				
+				<p:outputLabel for="button3" value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
+        		<p:calendar id="button3" value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" showOn="button" pattern="dd-MM-yyyy" />
+
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
 				<p:inputText value="#{campeonatoManagedBean.campeonato.valorTaxa}" />
 			</p:panelGrid>
