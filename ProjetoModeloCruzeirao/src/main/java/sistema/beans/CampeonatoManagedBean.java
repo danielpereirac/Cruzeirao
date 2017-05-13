@@ -10,7 +10,7 @@ import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import sistema.modelos.Campeonato;
-
+import sistema.modelos.Categoria;
 import sistema.service.CampeonatoService;
 
 @SuppressWarnings("serial")
@@ -94,6 +94,16 @@ public class CampeonatoManagedBean implements Serializable {
 	public void onRowEdit(RowEditEvent event) {
 		Campeonato c = ((Campeonato) event.getObject());
 		service.alterarCampeonato(c);
+	}
+	
+	public List<Categoria> getCampeonatoCategorias() {
+		
+		if(campeonatoAtual != null)
+		{
+			return service.pesquisarCampeonatoCategorias(campeonatoAtual);
+		}
+		else
+			return null;	
 	}
 
 	public Campeonato getCampeonato() {

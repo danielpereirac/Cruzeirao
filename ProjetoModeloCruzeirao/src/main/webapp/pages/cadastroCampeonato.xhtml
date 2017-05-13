@@ -62,11 +62,11 @@
 				rowKey="#{aux.codigoCampeonato}">
 
 				<p:ajax event="cellEdit" listener="#{campeonatoManagedBean.onCellEdit}" update=":formTabelaCampeonato" />
-				<p:ajax event="rowSelect" update=":formTabelaCampeonato" />
-				<p:ajax event="rowUnselect" update=":formTabelaCampeonato" />
+				<p:ajax event="rowSelect" update=":formTabelaCategoria" />
+				<p:ajax event="rowUnselect" update=":formTabelaCategoria" />
 				<p:ajax event="rowEdit"
 					listener="#{campeonatoManagedBean.onRowEdit}"
-					update=":formTabelaCampeonato" />
+					update=":formTabelaCategoria" />
 
 				<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}">
 					<p:outputLabel value="#{aux.codigoCampeonato}" />
@@ -117,30 +117,26 @@
 		<br />
 		<br />
 
-		<!--  <h:form id="formTabelaCategoria">
+		<h:form id="formTabelaCategoria">
 			<h3>
 				<p:outputLabel
-					value="#{msg['pages.cadastroCampeonato.categoriasCam']}: #{campeonatoManagedBean.campeonatoAtual.nomeCampeonato}" />
+					value="#{msg['pages.cadastroCampeonato.categoriasCam']} #{campeonatoManagedBean.campeonatoAtual.nomeCampeonato}" />
 			</h3>
-			<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="cat" id="tabelaCategoria">
+			<p:dataTable value="#{campeonatoManagedBean.getCampeonatoCategorias()}" var="aux" id="tabelaCategoria">
 				<p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
-					<p:outputLabel value="#{cat.codigoCategoria}" />
+					<p:outputLabel value="#{aux.codigoCategoria}" />
 				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
-					<p:outputLabel value="#{cat.nome}" />
-				</p:column>
-				<p:column
-					headerText="#{msg['pages.cadastroCategoria.tipoCategoria']}">
-					<p:outputLabel value="#{cat.tipoCategoria}" />
+					<p:outputLabel value="#{aux.nome}" />
 				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCategoria.descricao']}">
 					<p:commandLink
-						action="#{campeonatoManagedBean.descricaoCategoria(cat)}"
+						action="#{categoriaManagedBean.descricaoCategoria(aux)}"
 						value="Descricao">
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>
-		</h:form> -->
+		</h:form> 
 
 	</ui:define>
 </ui:composition>

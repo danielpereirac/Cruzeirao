@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import sistema.modelos.Campeonato;
+import sistema.modelos.Categoria;
 
 public class CampeonatoService extends Service {
 
@@ -51,5 +52,24 @@ public class CampeonatoService extends Service {
 		em.close();
 
 		return campeonatos;
+	}
+
+	public List<Categoria> pesquisarCampeonatoCategorias(Campeonato campeonato) {
+        
+		List <Categoria> categorias;
+		
+		EntityManager em = emf.createEntityManager();
+		    
+		    //Torna gerenciavel a entidade
+		    campeonato = em.merge(campeonato);
+		    
+		    //Atualiza a entidade para não usar dados antigos no cache do JPA
+		    //Ver https://wiki.eclipse.org/EclipseLink/Examples/JPA/Caching
+			em.refresh(campeonato);
+			categorias = campeonato.getCategorias();
+			
+		em.close();
+	    
+	    return categorias;
 	}
 }

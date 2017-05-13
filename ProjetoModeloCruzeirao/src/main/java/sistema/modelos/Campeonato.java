@@ -34,7 +34,6 @@ public class Campeonato implements Serializable {
 		super();
 		this.codigoCampeonato = codigo;
 		dataInicioInscricao = new Date();
-		dataInicioCampeonato = new Date();
 	}
 
 	public int getCodigoCampeonato() {
