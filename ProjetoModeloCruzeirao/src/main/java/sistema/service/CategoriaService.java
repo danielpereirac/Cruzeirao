@@ -32,7 +32,7 @@ public class CategoriaService extends Service {
 		List<Categoria> categorias;
 
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select ca From Campeonato ca");
+		Query q = em.createQuery("Select c From Categoria c");
 		categorias = q.getResultList();
 		em.close();
 
