@@ -22,11 +22,13 @@
 			<p:panelGrid columns="2">
 
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
-				<p:selectOneMenu id="Campeonato"
-					value="#{campeonatoManagedBean.campeonato.nomeCampeonato}">
-					<f:selectItem itemLabel="Select" itemValue="" />
-					<f:selectItem itemLabel="A" itemValue="A" />
-					<f:selectItem itemLabel="B" itemValue="B" />
+				<p:selectOneMenu id="Campeonato">
+					<f:selectItem itemLabel="Campeonato" itemValue="" />
+					<f:selectItems value="#{campeonatoManagedBean.getCampeonatos()}"					  
+								var="cmp"
+								itemLabel="#{cmp.nomeCampeonato}"
+								itemValue="#{cmp.codigoCampeonato}"				
+					/>
 				</p:selectOneMenu>
 
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
