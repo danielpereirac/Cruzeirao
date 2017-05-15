@@ -26,6 +26,10 @@ public class CategoriaService extends Service {
 
 	}
 
+	public void alterarCategoria(Categoria categoria) {
+
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Categoria> getCategorias() {
 

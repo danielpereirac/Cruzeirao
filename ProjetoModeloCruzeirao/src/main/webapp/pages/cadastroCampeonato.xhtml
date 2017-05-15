@@ -27,22 +27,36 @@
 				</p:selectBooleanButton>
 
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
-				<p:inputText value="#{campeonatoManagedBean.campeonato.nomeCampeonato}" />
-				
+				<p:inputText
+					value="#{campeonatoManagedBean.campeonato.nomeCampeonato}" />
+
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.ano']}" />
-				<p:inputText value="#{campeonatoManagedBean.campeonato.anoCampeonato}" />
-					
-				<p:outputLabel for="button" value="#{msg['pages.cadastroCampeonato.inicio']}" />
-        		<p:calendar id="button" value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" showOn="button" pattern="dd-MM-yyyy" />
-				
-				<p:outputLabel for="button1" value="#{msg['pages.cadastroCampeonato.fim']}" />
-        		<p:calendar id="button1" value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}" showOn="button" pattern="dd-MM-yyyy" />
-				
-				<p:outputLabel for="button2" value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
-        		<p:calendar id="button2" value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}" showOn="button" pattern="dd-MM-yyyy" />
-				
-				<p:outputLabel for="button3" value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
-        		<p:calendar id="button3" value="#{campeonatoManagedBean.campeonato.dataFimInscricao}" showOn="button" pattern="dd-MM-yyyy" />
+				<p:inputText
+					value="#{campeonatoManagedBean.campeonato.anoCampeonato}" />
+
+				<p:outputLabel for="button"
+					value="#{msg['pages.cadastroCampeonato.inicio']}" />
+				<p:calendar id="button"
+					value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}"
+					showOn="button" pattern="dd-MM-yyyy" />
+
+				<p:outputLabel for="button1"
+					value="#{msg['pages.cadastroCampeonato.fim']}" />
+				<p:calendar id="button1"
+					value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}"
+					showOn="button" pattern="dd-MM-yyyy" />
+
+				<p:outputLabel for="button2"
+					value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
+				<p:calendar id="button2"
+					value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}"
+					showOn="button" pattern="dd-MM-yyyy" />
+
+				<p:outputLabel for="button3"
+					value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
+				<p:calendar id="button3"
+					value="#{campeonatoManagedBean.campeonato.dataFimInscricao}"
+					showOn="button" pattern="dd-MM-yyyy" />
 
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
 				<p:inputText value="#{campeonatoManagedBean.campeonato.valorTaxa}" />
@@ -61,7 +75,9 @@
 				selection="#{campeonatoManagedBean.campeonatoAtual}"
 				rowKey="#{aux.codigoCampeonato}">
 
-				<p:ajax event="cellEdit" listener="#{campeonatoManagedBean.onCellEdit}" update=":formTabelaCampeonato" />
+				<p:ajax event="cellEdit"
+					listener="#{campeonatoManagedBean.onCellEdit}"
+					update=":formTabelaCampeonato" />
 				<p:ajax event="rowSelect" update=":formTabelaCategoria" />
 				<p:ajax event="rowUnselect" update=":formTabelaCategoria" />
 				<p:ajax event="rowEdit"
@@ -93,9 +109,8 @@
 							<p:outputLabel value="#{aux.inscricao}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:selectBooleanButton value="#{aux.inscricao}"
-								onLabel="ON" offLabel="OFF" onIcon="" offIcon=""
-								style="width:80px">
+							<p:selectBooleanButton value="#{aux.inscricao}" onLabel="ON"
+								offLabel="OFF" onIcon="" offIcon="" style="width:80px">
 							</p:selectBooleanButton>
 						</f:facet>
 					</p:cellEditor>
@@ -122,7 +137,9 @@
 				<p:outputLabel
 					value="#{msg['pages.cadastroCampeonato.categoriasCam']} #{campeonatoManagedBean.campeonatoAtual.nomeCampeonato}" />
 			</h3>
-			<p:dataTable value="#{campeonatoManagedBean.getCampeonatoCategorias()}" var="aux" id="tabelaCategoria">
+			<p:dataTable
+				value="#{campeonatoManagedBean.getCampeonatoCategorias()}" var="aux"
+				id="tabelaCategoria">
 				<p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
 					<p:outputLabel value="#{aux.codigoCategoria}" />
 				</p:column>
@@ -136,13 +153,7 @@
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>
-		</h:form> 
+		</h:form>
 
 	</ui:define>
 </ui:composition>
-
-
-
-
-
-

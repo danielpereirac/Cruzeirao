@@ -10,18 +10,18 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class LocaleBean {
 
-    private Locale locale = Locale.ENGLISH;
+	private Locale locale = Locale.ENGLISH;
 
-    public Locale getLocale() {
-        return locale;
-    }
+	public Locale getLocale() {
+		return locale;
+	}
 
-    public String getLanguage() {
-        return locale.getLanguage();
-    }
+	public String getLanguage() {
+		return locale.getLanguage();
+	}
 
-    public void setLanguage(String language) {
-        locale = new Locale(language);
-        FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
-    }
+	public void setLanguage(String language) {
+		locale = new Locale(language);
+		FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+	}
 }

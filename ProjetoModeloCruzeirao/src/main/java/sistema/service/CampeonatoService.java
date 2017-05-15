@@ -11,6 +11,7 @@ import sistema.modelos.Categoria;
 public class CampeonatoService extends Service {
 
 	public CampeonatoService() {
+
 	}
 
 	public void salvar(Campeonato campeonato) {
@@ -23,7 +24,7 @@ public class CampeonatoService extends Service {
 	}
 
 	public void alterarCampeonato(Campeonato campeonato) {
-		
+
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.merge(campeonato);
@@ -32,7 +33,7 @@ public class CampeonatoService extends Service {
 	}
 
 	public void removerCampeonatos(Campeonato campeonato) {
-		
+
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		campeonato = em.find(Campeonato.class, campeonato.getCodigoCampeonato());
@@ -43,7 +44,7 @@ public class CampeonatoService extends Service {
 
 	@SuppressWarnings("unchecked")
 	public List<Campeonato> getCampeonatos() {
-		
+
 		List<Campeonato> campeonatos;
 
 		EntityManager em = emf.createEntityManager();
@@ -54,22 +55,47 @@ public class CampeonatoService extends Service {
 		return campeonatos;
 	}
 
+	public Campeonato getCampeonatoByCodigo(int codigo) {
+
+		List<Campeonato> lista = getCampeonatos();
+		Campeonato cam = new Campeonato();
+
+		for (Campeonato c : lista) {
+			if (codigo == c.getCodigoCampeonato())
+				cam = c;
+		}
+
+		return cam;
+	}
+
+	public Campeonato getCampeonatoByNome(String nomeCampeonato) {
+
+		List<Campeonato> lista = getCampeonatos();
+		Campeonato cam = new Campeonato();
+
+		for (Campeonato c : lista) {
+			if (c.getNomeCampeonato().equals(nomeCampeonato))
+				cam = c;
+		}
+
+		return cam;
+	}
+
 	public List<Categoria> pesquisarCampeonatoCategorias(Campeonato campeonato) {
-        
-		List <Categoria> categorias;
-		
+		List<Categoria> categorias;
+
 		EntityManager em = emf.createEntityManager();
-		    
-		    //Torna gerenciavel a entidade
-		    campeonato = em.merge(campeonato);
-		    
-		    //Atualiza a entidade para não usar dados antigos no cache do JPA
-		    //Ver https://wiki.eclipse.org/EclipseLink/Examples/JPA/Caching
-			em.refresh(campeonato);
-			categorias = campeonato.getCategorias();
-			
+
+		// Torna gerenciavel a entidade
+		campeonato = em.merge(campeonato);
+
+		// Atualiza a entidade para não usar dados antigos no cache do JPA
+		// Ver https://wiki.eclipse.org/EclipseLink/Examples/JPA/Caching
+		em.refresh(campeonato);
+		categorias = campeonato.getCategorias();
+
 		em.close();
-	    
-	    return categorias;
+
+		return categorias;
 	}
 }

@@ -9,14 +9,14 @@ import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
-public class Categoria implements Serializable{
+public class Categoria implements Serializable {
 
 	@Id
 	private int codigoCategoria;
 	private String nome;
 	private int nascidosApartirDe;
 	private List<Inscricao> inscricoes;
-	
+
 	@ManyToOne
 	private Campeonato campeonato;
 	private List<Fase> fases;

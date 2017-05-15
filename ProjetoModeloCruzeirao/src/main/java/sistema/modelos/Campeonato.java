@@ -16,8 +16,8 @@ public class Campeonato implements Serializable {
 	private String nomeCampeonato;
 	private List<Local> locais;
 	private List<Juiz> juizes;
-	
-	@OneToMany(mappedBy="campeonato")
+
+	@OneToMany(mappedBy = "campeonato")
 	private List<Categoria> categorias;
 	private Date dataInicioInscricao;
 	private Date dataFimInscricao;
@@ -29,8 +29,8 @@ public class Campeonato implements Serializable {
 
 	public Campeonato() {
 	}
-	
-	public Campeonato(int codigo){
+
+	public Campeonato(int codigo) {
 		super();
 		this.codigoCampeonato = codigo;
 		dataInicioInscricao = new Date();
@@ -72,8 +72,8 @@ public class Campeonato implements Serializable {
 		return categorias;
 	}
 
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
+	public void addCategorias(Categoria categoria) {
+		this.categorias.add(categoria);
 	}
 
 	public Date getDataInicioInscricao() {
@@ -130,5 +130,39 @@ public class Campeonato implements Serializable {
 
 	public void setValorTaxa(double valorTaxa) {
 		this.valorTaxa = valorTaxa;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nomeCampeonato == null) ? 0 : nomeCampeonato.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campeonato other = (Campeonato) obj;
+		if (nomeCampeonato == null) {
+			if (other.nomeCampeonato != null)
+				return false;
+		} else if (!nomeCampeonato.equals(other.nomeCampeonato))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Campeonato [codigoCampeonato=" + codigoCampeonato + ", nomeCampeonato=" + nomeCampeonato + ", locais="
+				+ locais + ", juizes=" + juizes + ", categorias=" + categorias + ", dataInicioInscricao="
+				+ dataInicioInscricao + ", dataFimInscricao=" + dataFimInscricao + ", anoCampeonato=" + anoCampeonato
+				+ ", inscricao=" + inscricao + ", dataInicioCampeonato=" + dataInicioCampeonato + ", dataFimCampeonato="
+				+ dataFimCampeonato + ", valorTaxa=" + valorTaxa + "]";
 	}
 }

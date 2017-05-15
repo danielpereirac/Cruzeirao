@@ -22,25 +22,27 @@
 			<p:panelGrid columns="2">
 
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
-				<p:selectOneMenu id="Campeonato">
-					<f:selectItem itemLabel="Campeonato" itemValue="" />
-					<f:selectItems value="#{campeonatoManagedBean.getCampeonatos()}"					  
-								var="cmp"
-								itemLabel="#{cmp.nomeCampeonato}"
-								itemValue="#{cmp.codigoCampeonato}"				
-					/>
+				<p:selectOneMenu value="#{categoriaManagedBean.campeonatoCategoria}"
+					converter="campeonatoConverter">
+					<f:selectItem itemValue=""
+						itemLabel="#{msg['pages.cadastroCategoria.campeonato']}" />
+					<f:selectItems value="#{categoriaManagedBean.campeonatos}"
+						var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nomeCampeonato}" />
 				</p:selectOneMenu>
 
 				<p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
 				<p:inputText value="#{categoriaManagedBean.categoria.nome}" />
-				
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
+
+				<p:outputLabel
+					value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
 				<p:inputText value="#{categoriaManagedBean.categoria.minJogadores}" />
-				
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
+
+				<p:outputLabel
+					value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
 				<p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}" />
-				
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
+
+				<p:outputLabel
+					value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
 				<p:selectOneMenu id="sexo"
 					value="#{categoriaManagedBean.categoria.sexo}">
 					<f:selectItem itemLabel="Select" itemValue="" />
@@ -52,7 +54,6 @@
 			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
 				action="#{categoriaManagedBean.salvar}"
 				update=":formCategoria, :formTabelaCategoria" />
-				
 		</h:form>
 
 		<br />
@@ -60,7 +61,7 @@
 		<h:form id="formTabelaCategoria">
 			<p:dataTable value="#{categoriaManagedBean.categorias}" var="aux"
 				id="tabelaCategoria">
-				
+
 				<p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
 					<p:outputLabel value="#{aux.codigoCategoria}" />
 				</p:column>
@@ -74,9 +75,9 @@
 					</p:commandLink>
 				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCategoria.campeonato']}">
-					<p:outputLabel value="#{aux.getCampeonato().getNomeCampeonato()}" /> 
+					<p:outputLabel value="#{aux.getCampeonato().getNomeCampeonato()}" />
 				</p:column>
-				
+
 				<p:column headerText="#{msg['pages.cadastroCategoria.opcoes']}">
 					<p:commandLink
 						action="#{categoriaManagedBean.editarCategoria(aux)}"
@@ -93,12 +94,3 @@
 
 	</ui:define>
 </ui:composition>
-
-
-
-
-
-
-
-
-

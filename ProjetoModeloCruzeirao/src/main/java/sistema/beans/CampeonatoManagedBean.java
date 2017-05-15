@@ -17,6 +17,7 @@ import sistema.service.CampeonatoService;
 @ManagedBean
 @SessionScoped
 public class CampeonatoManagedBean implements Serializable {
+
 	private int codigoCampeonato = 1;
 	private Campeonato campeonato = new Campeonato(codigoCampeonato);
 	private Campeonato campeonatoAtual;
@@ -42,15 +43,6 @@ public class CampeonatoManagedBean implements Serializable {
 		campeonato = new Campeonato(codigoCampeonato);
 	}
 
-	public String inserirCategorias(Campeonato campeonato) {
-		this.campeonatoAtual = campeonato;
-		return "inserirCategorias";
-	}
-
-	public String voltar() {
-		return "cadastroCampeonato";
-	}
-
 	public String editarCampeonato(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return "editarCampeonato";
@@ -65,9 +57,18 @@ public class CampeonatoManagedBean implements Serializable {
 		return "cadastroCampeonato";
 	}
 
+	public String voltar() {
+		return "cadastroCampeonato";
+	}
+
 	public String descricaoCampeonato(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return "descricaoCampeonato";
+	}
+
+	public String inserirCategorias(Campeonato campeonato) {
+		this.campeonatoAtual = campeonato;
+		return "inserirCategorias";
 	}
 
 	public boolean mostrarInscricao(Campeonato campeonato) {
@@ -95,15 +96,13 @@ public class CampeonatoManagedBean implements Serializable {
 		Campeonato c = ((Campeonato) event.getObject());
 		service.alterarCampeonato(c);
 	}
-	
+
 	public List<Categoria> getCampeonatoCategorias() {
-		
-		if(campeonatoAtual != null)
-		{
+		if (campeonatoAtual != null)
 			return service.pesquisarCampeonatoCategorias(campeonatoAtual);
-		}
+
 		else
-			return null;	
+			return null;
 	}
 
 	public Campeonato getCampeonato() {
