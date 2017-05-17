@@ -1,15 +1,37 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Equipe {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@SuppressWarnings("serial")
+@Entity
+public class Equipe implements Serializable {
+	@Id
+	private int codigoEquipe;
+	
 	private String nome;
 	private Date dataFundacao;
 	private String cidade;
-	private List<Usuario> diretores;
+	private Usuario diretor;
 	
+	public Equipe(){}
+	public Equipe(int codigo){
+		super();
+		this.codigoEquipe=codigo;
+		//diretor= userATual;
+		
+	}
+	
+	public int getCodigoEquipe() {
+		return codigoEquipe;
+	}
+	public void setCodigoEquipe(int codigoEquipe) {
+		this.codigoEquipe = codigoEquipe;
+	}
 	
 	public String getNome() {
 		return nome;
@@ -29,11 +51,11 @@ public class Equipe {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public List<Usuario> getDiretores() {
-		return diretores;
+	public Usuario getDiretor() {
+		return diretor;
 	}
-	public void setDiretores(List<Usuario> diretores) {
-		this.diretores = diretores;
+	public void setDiretor(Usuario diretores) {
+		this.diretor = diretores;
 	}
 	
 	
