@@ -11,27 +11,25 @@
 		<h:outputText value="#{msg['pages.recuperarSenha.title']}" />
 	</ui:define>
 
-
 	<ui:define name="principal">
 
 		<h1>
 			<p:outputLabel value="#{msg['pages.recuperarSenha.menu']}" />
 		</h1>
 
-		<h:form id="formRecuperar">
-			<p:panelGrid columns="2">
-				<p:outputLabel value="#{msg['pages.recuperarSenha.email']}" />
-				<p:inputText value="#{usuarioManagedBean.usuarioRecuperarSenha.email}" />
-				<p:outputLabel value="#{msg['pages.recuperarSenha.cpf']}" />
-				<p:inputText value="#{usuarioManagedBean.usuarioRecuperarSenha.cpf}" />
-
+<h:form id="formMostrar">
+		<p:panelGrid columns="2">
+			<p:outputLabel value="#{msg['pages.cadastroUsuario.nome']}" />
+			<p:outputLabel value="#{usuarioManagedBean.usuario.nome}" />
+			
+			<p:outputLabel value="#{msg['pages.cadastroUsuario.senha']}" />
+			<p:outputLabel value="#{usuarioManagedBean.usuario.senha}" />
+			
+			
 			</p:panelGrid>
-			<p:commandButton value="#{msg['pages.recuperarSenha.btnRecuperar']}"
-				action="#{usuarioManagedBean.recuperarSenha}" />
-			<p:commandButton value="#{msg['pages.recuperarSenha.btnVoltar']}"
-				action="#{usuarioManagedBean.voltar}" />
+		<p:commandButton value="#{msg['pages.cadastroUsuario.btnVoltar']}"
+				action="#{usuarioManagedBean.voltar}"/>
 				
-		</h:form>
-
+</h:form>
 	</ui:define>
 </ui:composition>

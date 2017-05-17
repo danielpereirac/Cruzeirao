@@ -16,7 +16,10 @@ public class UsuarioService extends Service {
 	public UsuarioService()
 	{
 		
+		
+		
 	}
+	
 	
 	public void salvar(Usuario usuario) 
 	{
@@ -40,7 +43,7 @@ public class UsuarioService extends Service {
 		List<Usuario> usuarios;
 
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select c From Campeonato c");
+		Query q = em.createQuery("Select u From Usuario u ");
 		usuarios = q.getResultList();
 		em.close();
 
@@ -50,4 +53,6 @@ public class UsuarioService extends Service {
 	public void entrar(Usuario usuarioEntrar) {
 		
 	}
+	
+	
 }

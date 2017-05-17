@@ -33,10 +33,12 @@ public class UsuarioManagedBean implements Serializable {
 	
 	public String entrar()
 	{
-		service.getUsuarios();
+		
+		usuarios =service.getUsuarios();
 		for(Usuario aux: usuarios)
 		{
-			if((aux.getNome()==usuarioEntrar.getNome())&&(aux.getSenha()==usuario.getSenha()))
+		
+			if((aux.getNome().equals(usuarioEntrar.getNome()))&&(aux.getSenha().equals(usuarioEntrar.getSenha())))
 			{
 				permissao = true;
 			}
@@ -46,6 +48,7 @@ public class UsuarioManagedBean implements Serializable {
 		return "paginaInicial";
 		else
 		return "cadastroCampeonato";
+		
 	}
 	
 	public String voltar()
@@ -55,9 +58,24 @@ public class UsuarioManagedBean implements Serializable {
 	
 	public String recuperarSenha()
 	{
-		service.recuperarSenha(usuarioRecuperarSenha);
-		usuarioRecuperarSenha = new Usuario();
+		usuarios=service.getUsuarios();
+		for(Usuario aux : usuarios)
+		{
+			if(aux.getEmail().equals(usuarioRecuperarSenha.getEmail())&& (aux.getCpf().equals(usuarioRecuperarSenha.getCpf())))
+			{
+				permissao = true;
+				usuario = aux;
+			}
+		}
+		if(permissao == true)
+		{
+			return "mostrarSenha";
+		}
+		else
+		{
+		permissao = false;
 		return "login";
+		}
 	}
 	
 	public Usuario getUsuario() {
