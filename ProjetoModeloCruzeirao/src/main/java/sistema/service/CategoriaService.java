@@ -23,11 +23,22 @@ public class CategoriaService extends Service {
 	}
 
 	public void removerCategoria(Categoria categoria) {
-
+		
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		categoria = em.find(Categoria.class, categoria.getCodigoCategoria());
+		em.remove(categoria);
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	public void alterarCategoria(Categoria categoria) {
-
+		
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(categoria);
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@SuppressWarnings("unchecked")

@@ -20,6 +20,7 @@
 
 		<h:form id="formCategoria">
 			<p:panelGrid columns="2">
+			
 				<p:outputLabel for="seletorCampeonato"
 					value="#{msg['pages.cadastroCategoria.campeonato']}" />
 				<p:selectOneMenu id="seletorCampeonato"
@@ -42,13 +43,13 @@
 					value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
 				<p:spinner id="minJogadores"
 					value="#{categoriaManagedBean.categoria.minJogadores}"
-					maxlength="2" min="4" max="99" />
+					maxlength="2" min="5" max="99" />
 
 				<h:outputLabel for="maxJogadores"
 					value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
 				<p:spinner id="maxJogadores"
 					value="#{categoriaManagedBean.categoria.maxJogadores}"
-					maxlength="2" min="4" max="99" />
+					maxlength="2" min="5" max="99" />
 
 				<p:outputLabel for="selectorSexo"
 					value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
@@ -59,11 +60,6 @@
 					<f:selectItem itemLabel="Male" itemValue="Male" />
 					<f:selectItem itemLabel="Female" itemValue="Female" />
 				</p:selectOneMenu>
-
-				<p:dialog header="Basic Dialog" widgetVar="dlg1" id="dlgg" minHeight="40">
-					<h:outputText value="Resistance to PrimeFaces is futile!" />
-				</p:dialog>
-
 
 			</p:panelGrid>
 
@@ -76,8 +72,6 @@
 				action="#{categoriaManagedBean.salvar}"
 				update=":formCategoria, :formTabelaCategoria" />
 		</h:form>
-
-
 
 		<br />
 
@@ -103,7 +97,7 @@
 
 				<p:column headerText="#{msg['pages.cadastroCategoria.opcoes']}">
 					<p:commandLink
-						action="#{categoriaManagedBean.editarCategoria(aux)}"
+						action="#{categoriaManagedBean.editarCategoria(aux, aux.getCampeonato())}"
 						value="Editar / " update=":formTabelaCategoria">
 					</p:commandLink>
 					<p:commandLink

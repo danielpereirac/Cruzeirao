@@ -1,6 +1,7 @@
 package sistema.modelos;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -34,6 +35,7 @@ public class Campeonato implements Serializable {
 		super();
 		this.codigoCampeonato = codigo;
 		dataInicioInscricao = new Date();
+		anoCampeonato = Calendar.getInstance().get(Calendar.YEAR);
 	}
 
 	public int getCodigoCampeonato() {

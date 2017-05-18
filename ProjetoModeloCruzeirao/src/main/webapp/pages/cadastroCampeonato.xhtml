@@ -26,9 +26,9 @@
 					offLabel="OFF" onIcon="" offIcon="" style="width:80px">
 				</p:selectBooleanButton>
 
-				<p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
-				<p:inputText
-					value="#{campeonatoManagedBean.campeonato.nomeCampeonato}" />
+				<p:outputLabel for="name" value="#{msg['pages.cadastroCampeonato.nome']}" />
+				<p:inputText id="name" value="#{campeonatoManagedBean.campeonato.nomeCampeonato}" 
+					required="true" requiredMessage="#{msg['pages.validator.nome']}"/>
 
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.ano']}" />
 				<p:inputText
@@ -38,13 +38,15 @@
 					value="#{msg['pages.cadastroCampeonato.inicio']}" />
 				<p:calendar id="button"
 					value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}"
-					showOn="button" pattern="dd-MM-yyyy" />
+					showOn="button" pattern="dd-MM-yyyy" required="true"
+					requiredMessage="#{msg['pages.validator.inicioCam']}" />
 
 				<p:outputLabel for="button1"
 					value="#{msg['pages.cadastroCampeonato.fim']}" />
 				<p:calendar id="button1"
 					value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}"
-					showOn="button" pattern="dd-MM-yyyy" />
+					showOn="button" pattern="dd-MM-yyyy" required="true"
+					requiredMessage="#{msg['pages.validator.fimCam']}"/>
 
 				<p:outputLabel for="button2"
 					value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
@@ -56,15 +58,23 @@
 					value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
 				<p:calendar id="button3"
 					value="#{campeonatoManagedBean.campeonato.dataFimInscricao}"
-					showOn="button" pattern="dd-MM-yyyy" />
+					showOn="button" pattern="dd-MM-yyyy" required="true"
+					requiredMessage="#{msg['pages.validator.fimIns']}" />
 
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
 				<p:inputText value="#{campeonatoManagedBean.campeonato.valorTaxa}" />
+				
 			</p:panelGrid>
 
+			<p:message for="name" style="color:red" />
+			<p:message for="button" style="color:red" />
+			<p:message for="button1" style="color:red" />
+			<p:message for="button3" style="color:red" />
+			
 			<p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
 				action="#{campeonatoManagedBean.salvar}"
 				update=":formCampeonato, :formTabelaCampeonato" />
+
 		</h:form>
 
 		<br />

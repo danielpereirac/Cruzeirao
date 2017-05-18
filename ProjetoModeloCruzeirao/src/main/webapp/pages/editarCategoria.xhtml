@@ -19,21 +19,52 @@
 
 		<h:form id="formCategoria">
 			<p:panelGrid columns="2">
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.tipoCategoria']}" />
-				<p:inputText value="#{categoriaManagedBean.categoriaAtual.tipoCategoria}" />
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
-				<p:inputText value="#{categoriaManagedBean.categoriaAtual.qntMinJogadores}" />
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
-				<p:inputText value="#{categoriaManagedBean.categoriaAtual.qntMaxJogadores}" />
-				
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
-				<p:selectOneMenu id="sexo" value="#{categoriaManagedBean.categoriaAtual.sexoCategoria}">
-            		<f:selectItem itemLabel="Select" itemValue="" />
-            		<f:selectItem itemLabel="Male" itemValue="Male" />
-            		<f:selectItem itemLabel="Female" itemValue="Female" />
-        		</p:selectOneMenu>
+			
+				<p:outputLabel for="seletorCampeonato"
+					value="#{msg['pages.cadastroCategoria.campeonato']}" />
+				<p:selectOneMenu id="seletorCampeonato"
+					value="#{categoriaManagedBean.campeonatoCategoriaAtual}"
+					converter="campeonatoConverter" required="true"
+					requiredMessage="#{msg['pages.validator.campeonato']}">
+					<f:selectItem itemValue=""
+						itemLabel="#{msg['pages.cadastroCategoria.campeonato']}" />
+					<f:selectItems value="#{categoriaManagedBean.campeonatos}"
+						var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nomeCampeonato}" />
+				</p:selectOneMenu>
+			
+				<p:outputLabel for="name"
+					value="#{msg['pages.cadastroCategoria.nome']}" />
+				<p:inputText id="name"
+					value="#{categoriaManagedBean.categoriaAtual.nome}" required="true"
+					requiredMessage="#{msg['pages.validator.nome']}" />
+
+				<h:outputLabel for="minJogadores"
+					value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
+				<p:spinner id="minJogadores"
+					value="#{categoriaManagedBean.categoriaAtual.minJogadores}"
+					maxlength="2" min="5" max="99" />
+
+				<h:outputLabel for="maxJogadores"
+					value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
+				<p:spinner id="maxJogadores"
+					value="#{categoriaManagedBean.categoriaAtual.maxJogadores}"
+					maxlength="2" min="5" max="99" />
+
+				<p:outputLabel for="selectorSexo"
+					value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
+				<p:selectOneMenu id="selectorSexo"
+					value="#{categoriaManagedBean.categoriaAtual.sexo}" required="true"
+					requiredMessage="#{msg['pages.validator.campeonato']}">
+					<f:selectItem itemLabel="Select" itemValue="" />
+					<f:selectItem itemLabel="Male" itemValue="Male" />
+					<f:selectItem itemLabel="Female" itemValue="Female" />
+				</p:selectOneMenu>
         		
 			</p:panelGrid>
+			
+			<p:message for="seletorCampeonato" style="color:red" />
+			<p:message for="name" style="color:red" />
+			<p:message for="selectorSexo" style="color:red" />
 
 			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
 				action="#{categoriaManagedBean.salvarEditar}"
