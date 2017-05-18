@@ -1,10 +1,16 @@
 package sistema.beans;
 
+import java.io.Console;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
+
+import org.primefaces.component.message.Message;
 
 import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
@@ -37,15 +43,28 @@ public class CategoriaManagedBean implements Serializable {
 	}
 
 	public void salvar() {
+		if (categoria.getMinJogadores() > categoria.getMaxJogadores()) {
+//			error();
+		} else {
+			if (categoria.getMinJogadores() < 4) {
+				categoria.setMinJogadores(4);
+			}
+			if (categoria.getMaxJogadores() < 4) {
+				categoria.setMaxJogadores(4);
+			}
+		}
+
 		campeonatoCategoria.addCategorias(categoria);
 		servCam.alterarCampeonato(campeonatoCategoria);
 
 		categoria.setCampeonato(campeonatoCategoria);
 		codigoCategoria = getId();
 		categoria.setCodigoCategoria(codigoCategoria);
+
 		service.salvar(categoria);
 		categoria = new Categoria(codigoCategoria);
 		campeonatoCategoria = null;
+		
 	}
 
 	public String salvarEditar() {
@@ -114,4 +133,8 @@ public class CategoriaManagedBean implements Serializable {
 	public void setCategoriaAtual(Categoria categoriaAtual) {
 		this.categoriaAtual = categoriaAtual;
 	}
+
+	public void error() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "A quantia mínima de jogadores não pode ser maior que a quantia máxima!."));
+    }
 }

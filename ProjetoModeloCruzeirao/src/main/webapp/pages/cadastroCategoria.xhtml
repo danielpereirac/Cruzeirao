@@ -20,41 +20,64 @@
 
 		<h:form id="formCategoria">
 			<p:panelGrid columns="2">
-
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
-				<p:selectOneMenu value="#{categoriaManagedBean.campeonatoCategoria}"
-					converter="campeonatoConverter">
+				<p:outputLabel for="seletorCampeonato"
+					value="#{msg['pages.cadastroCategoria.campeonato']}" />
+				<p:selectOneMenu id="seletorCampeonato"
+					value="#{categoriaManagedBean.campeonatoCategoria}"
+					converter="campeonatoConverter" required="true"
+					requiredMessage="#{msg['pages.validator.campeonato']}">
 					<f:selectItem itemValue=""
 						itemLabel="#{msg['pages.cadastroCategoria.campeonato']}" />
 					<f:selectItems value="#{categoriaManagedBean.campeonatos}"
 						var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nomeCampeonato}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
-				<p:inputText value="#{categoriaManagedBean.categoria.nome}" />
+				<p:outputLabel for="name"
+					value="#{msg['pages.cadastroCategoria.nome']}" />
+				<p:inputText id="name"
+					value="#{categoriaManagedBean.categoria.nome}" required="true"
+					requiredMessage="#{msg['pages.validator.nome']}" />
 
-				<p:outputLabel
+				<h:outputLabel for="minJogadores"
 					value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
-				<p:inputText value="#{categoriaManagedBean.categoria.minJogadores}" />
+				<p:spinner id="minJogadores"
+					value="#{categoriaManagedBean.categoria.minJogadores}"
+					maxlength="2" min="4" max="99" />
 
-				<p:outputLabel
+				<h:outputLabel for="maxJogadores"
 					value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
-				<p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}" />
+				<p:spinner id="maxJogadores"
+					value="#{categoriaManagedBean.categoria.maxJogadores}"
+					maxlength="2" min="4" max="99" />
 
-				<p:outputLabel
+				<p:outputLabel for="selectorSexo"
 					value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
-				<p:selectOneMenu id="sexo"
-					value="#{categoriaManagedBean.categoria.sexo}">
+				<p:selectOneMenu id="selectorSexo"
+					value="#{categoriaManagedBean.categoria.sexo}" required="true"
+					requiredMessage="#{msg['pages.validator.campeonato']}">
 					<f:selectItem itemLabel="Select" itemValue="" />
 					<f:selectItem itemLabel="Male" itemValue="Male" />
 					<f:selectItem itemLabel="Female" itemValue="Female" />
 				</p:selectOneMenu>
 
+				<p:dialog header="Basic Dialog" widgetVar="dlg1" id="dlgg" minHeight="40">
+					<h:outputText value="Resistance to PrimeFaces is futile!" />
+				</p:dialog>
+
+
 			</p:panelGrid>
+
+			<p:message for="seletorCampeonato" style="color:red" />
+			<p:message for="name" style="color:red" />
+			<p:message for="selectorSexo" style="color:red" />
+
+
 			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
 				action="#{categoriaManagedBean.salvar}"
 				update=":formCategoria, :formTabelaCategoria" />
 		</h:form>
+
+
 
 		<br />
 
@@ -91,6 +114,5 @@
 
 			</p:dataTable>
 		</h:form>
-
 	</ui:define>
 </ui:composition>
