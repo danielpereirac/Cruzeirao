@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
@@ -43,6 +44,9 @@ public class CampeonatoManagedBean implements Serializable {
 		campeonato.setCodigoCampeonato(codigoCampeonato);
 		service.salvar(campeonato);
 		campeonatoAtual = campeonato;
+		
+		RequestContext.getCurrentInstance().execute("PF('dlg').show();");
+		
 		campeonato = new Campeonato(codigoCampeonato);
 	}
 	
@@ -76,11 +80,13 @@ public class CampeonatoManagedBean implements Serializable {
 
 	public String salvarEditar() {
 		service.alterarCampeonato(campeonatoAtual);
-		return "cadastroCampeonato";
+		campeonatoAtual = null;
+		return "cadastroCampeonatoVer";
 	}
 
 	public String voltar() {
-		return "cadastroCampeonato";
+		campeonatoAtual = null;
+		return "cadastroCampeonatoVer";
 	}
 
 	public String descricaoCampeonato(Campeonato campeonato) {
