@@ -26,9 +26,11 @@
 					offLabel="OFF" onIcon="" offIcon="" style="width:80px">
 				</p:selectBooleanButton>
 
-				<p:outputLabel for="name" value="#{msg['pages.cadastroCampeonato.nome']}" />
-				<p:inputText id="name" value="#{campeonatoManagedBean.campeonato.nomeCampeonato}" 
-					required="true" requiredMessage="#{msg['pages.validator.nome']}"/>
+				<p:outputLabel for="name"
+					value="#{msg['pages.cadastroCampeonato.nome']}" />
+				<p:inputText id="name"
+					value="#{campeonatoManagedBean.campeonato.nomeCampeonato}"
+					required="true" requiredMessage="#{msg['pages.validator.nome']}" />
 
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.ano']}" />
 				<p:inputText
@@ -46,7 +48,7 @@
 				<p:calendar id="button1"
 					value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}"
 					showOn="button" pattern="dd-MM-yyyy" required="true"
-					requiredMessage="#{msg['pages.validator.fimCam']}"/>
+					requiredMessage="#{msg['pages.validator.fimCam']}" />
 
 				<p:outputLabel for="button2"
 					value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
@@ -63,19 +65,74 @@
 
 				<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
 				<p:inputText value="#{campeonatoManagedBean.campeonato.valorTaxa}" />
-				
+
 			</p:panelGrid>
 
 			<p:message for="name" style="color:red" />
 			<p:message for="button" style="color:red" />
 			<p:message for="button1" style="color:red" />
 			<p:message for="button3" style="color:red" />
-			
+
 			<p:commandButton value="#{msg['pages.cadastroCampeonato.btnSalvar']}"
 				action="#{campeonatoManagedBean.salvar}"
-				update=":formCampeonato, :formTabelaCampeonato" />
-
+				update=":formCampeonato, :formTabelaCampeonato, value"
+				oncomplete="PF('dlg').show()" />
+				
 		</h:form>
+
+		<h:form id="value">
+			<p:dialog header="Values" resizable="false" showEffect="fade"
+				widgetVar="dlg">
+				<p:panelGrid id="output" columns="2" columnClasses="label, value">
+
+					<p:outputLabel value="#{msg['pages.cadastroCampeonato.inscricao']}" />
+					<p:outputLabel
+						value="#{campeonatoManagedBean.campeonatoAtual.inscricao}" />
+
+					<p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
+					<p:outputLabel
+						value="#{campeonatoManagedBean.campeonatoAtual.nomeCampeonato}" />
+
+					<p:outputLabel value="#{msg['pages.cadastroCampeonato.ano']}" />
+					<p:outputLabel
+						value="#{campeonatoManagedBean.campeonatoAtual.anoCampeonato}" />
+
+					<h:outputText value="#{msg['pages.cadastroCampeonato.inicio']}" />
+					<h:outputText
+						value="#{campeonatoManagedBean.campeonatoAtual.dataInicioCampeonato}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+
+					<h:outputText value="#{msg['pages.cadastroCampeonato.fim']}" />
+					<h:outputText
+						value="#{campeonatoManagedBean.campeonatoAtual.dataFimCampeonato}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+
+					<h:outputText
+						value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
+					<h:outputText
+						value="#{campeonatoManagedBean.campeonatoAtual.dataInicioInscricao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+
+					<h:outputText value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
+					<h:outputText
+						value="#{campeonatoManagedBean.campeonatoAtual.dataFimInscricao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+
+					<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
+					<p:outputLabel
+						value="#{campeonatoManagedBean.campeonatoAtual.valorTaxa}" />
+
+				</p:panelGrid>
+				
+				<p:commandButton value="OK!" action="#{campeonatoManagedBean.ir}" update="value"/>
+				
+			</p:dialog>
+
+			</h:form>
 
 		<br />
 

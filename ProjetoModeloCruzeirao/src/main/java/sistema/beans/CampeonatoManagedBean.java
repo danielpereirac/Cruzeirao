@@ -40,7 +40,12 @@ public class CampeonatoManagedBean implements Serializable {
 		codigoCampeonato = getId();
 		campeonato.setCodigoCampeonato(codigoCampeonato);
 		service.salvar(campeonato);
+		campeonatoAtual = campeonato;
 		campeonato = new Campeonato(codigoCampeonato);
+	}
+	
+	public void ir() {
+		campeonatoAtual = null;
 	}
 
 	public String editarCampeonato(Campeonato campeonato) {
