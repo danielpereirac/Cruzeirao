@@ -18,78 +18,64 @@
 			<p:outputLabel value="#{msg['pages.cadastroCategoria.menu']}" />
 		</h1>
 
-
-				
 		<h:form id="formCategoria">
 			<p:panelGrid columns="2">
-		
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.tipoCategoria']}" />
-				<p:inputText value="#{categoriaManagedBean.categoria.tipoCategoria}" />
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
-				<p:inputText value="#{categoriaManagedBean.categoria.qntMinJogadores}" />
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
-				<p:inputText value="#{categoriaManagedBean.categoria.qntMaxJogadores}" />
-				
-				<p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
-				<p:selectOneMenu id="sexo" value="#{categoriaManagedBean.categoria.sexoCategoria}">
-            		<f:selectItem itemLabel="Select" itemValue="" />
-            		<f:selectItem itemLabel="Male" itemValue="Male" />
-            		<f:selectItem itemLabel="Female" itemValue="Female" />
-        		</p:selectOneMenu>
-        	
+
+				<p:outputLabel for="seletorCampeonato"
+					value="#{msg['pages.cadastroCategoria.campeonato']}" />
+				<p:selectOneMenu id="seletorCampeonato"
+					value="#{categoriaManagedBean.campeonatoCategoria}"
+					converter="campeonatoConverter" required="true"
+					requiredMessage="#{msg['pages.validator.campeonato']}">
+					<f:selectItem itemValue=""
+						itemLabel="#{msg['pages.cadastroCategoria.campeonato']}" />
+					<f:selectItems value="#{categoriaManagedBean.campeonatos}"
+						var="cmp" itemValue="#{cmp}" itemLabel="#{cmp.nomeCampeonato}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="name"
+					value="#{msg['pages.cadastroCategoria.nome']}" />
+				<p:inputText id="name"
+					value="#{categoriaManagedBean.categoria.nome}" required="true"
+					requiredMessage="#{msg['pages.validator.nome']}" />
+
+				<h:outputLabel for="minJogadores"
+					value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
+				<p:spinner id="minJogadores"
+					value="#{categoriaManagedBean.categoria.minJogadores}"
+					maxlength="2" min="5" max="99" />
+
+				<h:outputLabel for="maxJogadores"
+					value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
+				<p:spinner id="maxJogadores"
+					value="#{categoriaManagedBean.categoria.maxJogadores}"
+					maxlength="2" min="5" max="99" />
+
+				<p:outputLabel for="selectorSexo"
+					value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
+				<p:selectOneMenu id="selectorSexo"
+					value="#{categoriaManagedBean.categoria.sexo}" required="true"
+					requiredMessage="#{msg['pages.validator.campeonato']}">
+					<f:selectItem itemLabel="Select" itemValue="" />
+					<f:selectItem itemLabel="Male" itemValue="Male" />
+					<f:selectItem itemLabel="Female" itemValue="Female" />
+				</p:selectOneMenu>
+
 			</p:panelGrid>
+
+			<p:message for="seletorCampeonato" style="color:red" />
+			<p:message for="name" style="color:red" />
+			<p:message for="selectorSexo" style="color:red" />
+
+
 			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
-				action="#{categoriaManagedBean.salvar}"
-				update=":formCategoria, :formTabelaCategoria" />
-					<p:commandButton value="#{msg['pages.cadastroCampeonato.btnVoltar']}"
-				action="#{campeonatoManagedBean.voltar}"/>
+				action="#{categoriaManagedBean.salvar2}"
+				update=":formCategoria" />
+
 		</h:form>
+		<p:commandButton value="#{msg['pages.cadastroCategoria.btnVoltar']}"
+				action="#{categoriaManagedBean.voltar2}" />
+		<br />
 		
-		<br/>
-		<h:form id="formTabelaCampeonato">
-			<p:dataTable value="#{campeonatoManagedBean.campeonatoAtual}" var="aux"
-				id="tabelaCampeonato" > 
-		<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
-				<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}">
-					<p:outputLabel value="#{aux.codigoCampeonato}" />
-				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCampeonato.nome']}">
-					<p:outputLabel value="#{aux.nomeCampeonato}" />
-				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCampeonato.descricao']}">
-					<p:commandLink  action="#{campeonatoManagedBean.descricaoCampeonato(aux)}" value="Descricao / Description"> </p:commandLink>
-				</p:column>
-				</p:dataTable>
-				</h:form>
-				
-				<br/>
-				<br/>
-		
-
-
-		<h:form id="formTabelaCategoria">
-		<p:dataTable value="#{categoriaManagedBean.categorias}" var="aux"
-			id="tabelaCategoria">
-			<p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
-				<p:outputLabel value="#{aux.codigoCategoria}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCategoria.tipoCategoria']}">
-				<p:outputLabel value="#{aux.tipoCategoria}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCategoria.descricao']}">
-				<p:commandLink  action="#{categoriaManagedBean.descricaoCategoria2(aux)}" value="Descricao / Description"> </p:commandLink>
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCategoria.campeonato']}">
-				<p:outputLabel value="#{aux.campeonato.codigoCampeonato}" />
-			</p:column>
-			
-			<p:column headerText="#{msg['pages.cadastroCategoria.opcoes']}">
-				<p:commandLink  action="#{categoriaManagedBean.editarCategoria(aux)}" value="Editar / Edit " update=":formTabelaCategoria"> </p:commandLink>
-			   	<p:commandLink  action="#{categoriaManagedBean.removerCategoria2(aux)}" value="Excluir / Delete" update=":formTabelaCategoria"> </p:commandLink>
-			</p:column>
-			
-		</p:dataTable>
-		</h:form>
-
 	</ui:define>
 </ui:composition>

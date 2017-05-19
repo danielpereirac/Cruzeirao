@@ -3,8 +3,10 @@ package sistema.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
@@ -45,6 +47,21 @@ public class CampeonatoManagedBean implements Serializable {
 	}
 	
 	public void ir() {
+		if(campeonatoAtual == null)
+			no();
+		else {
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage("Successful"));
+		}
+		campeonatoAtual = null;
+   	}
+	
+	public void no() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage("Failed"));
+		
+		if(campeonatoAtual != null)
+			removerCampeonato(campeonatoAtual); 
 		campeonatoAtual = null;
 	}
 
@@ -69,11 +86,6 @@ public class CampeonatoManagedBean implements Serializable {
 	public String descricaoCampeonato(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return "descricaoCampeonato";
-	}
-
-	public String inserirCategorias(Campeonato campeonato) {
-		this.campeonatoAtual = campeonato;
-		return "inserirCategorias";
 	}
 
 	public boolean mostrarInscricao(Campeonato campeonato) {

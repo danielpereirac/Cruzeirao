@@ -60,12 +60,41 @@ public class CategoriaManagedBean implements Serializable {
 		servCam.alterarCampeonato(campeonatoCategoria);
 
 		categoria.setCampeonato(campeonatoCategoria);
+		
+		codigoCategoria = getId();
+		categoria.setCodigoCategoria(codigoCategoria);
+		service.salvar(categoria);
+		categoria = new Categoria(codigoCategoria);
+		campeonatoCategoria = null;
+
+	}
+	
+	public void salvar2() {
+
+		if (categoria.getMinJogadores() > categoria.getMaxJogadores()) {
+			categoria.setMaxJogadores(categoria.getMinJogadores());
+		}
+
+		else {
+
+			if (categoria.getMinJogadores() < 5) {
+				categoria.setMinJogadores(5);
+			}
+
+			if (categoria.getMaxJogadores() < 5) {
+				categoria.setMaxJogadores(5);
+			}
+		}
+
+		campeonatoCategoria.addCategorias(categoria);
+		servCam.alterarCampeonato(campeonatoCategoria);
+
+		categoria.setCampeonato(campeonatoCategoria);
 		codigoCategoria = getId();
 		categoria.setCodigoCategoria(codigoCategoria);
 
 		service.salvar(categoria);
 		categoria = new Categoria(codigoCategoria);
-		campeonatoCategoria = null;
 
 	}
 
@@ -110,6 +139,11 @@ public class CategoriaManagedBean implements Serializable {
 	public void removerCategoria2(Categoria categoria) {
 		service.removerCategoria(categoria);
 	}
+	
+	public String inserirCategorias(Campeonato campeonato) {
+		this.campeonatoCategoria = campeonato;
+		return "inserirCategorias";
+	}
 
 	public String descricaoCategoria(Categoria categoria) {
 		this.categoriaAtual = categoria;
@@ -126,7 +160,8 @@ public class CategoriaManagedBean implements Serializable {
 	}
 
 	public String voltar2() {
-		return "inserirCategorias";
+		campeonatoCategoria = null;
+		return "cadastroCampeonatoVer";
 	}
 
 	public Campeonato getCampeonatoCategoriaAtual() {

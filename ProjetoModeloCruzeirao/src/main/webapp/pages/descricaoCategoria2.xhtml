@@ -19,29 +19,20 @@
 		</h1>
 
 		<p:panelGrid columns="2">
-			<p:outputLabel value="#{msg['pages.cadastroCategoria.tipoCategoria']}" />
-			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.tipoCategoria}" />
+			<p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
+			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.nome}" />
 			<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
-			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.qntMinJogadores}" />
+			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.minJogadores}" />
 			<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
-			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.qntMaxJogadores}" />
+			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.maxJogadores}" />
 			<p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
-			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.sexoCategoria}" />
+			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.sexo}" />
 			<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
-			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.campeonato}" />
+			<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.campeonato.nomeCampeonato}" />
 		</p:panelGrid>
 		
 		<p:commandButton value="#{msg['pages.cadastroCampeonato.btnVoltar']}"
-				action="#{campeonatoManagedBean.voltarCategoria}"/>
+				action="#{categoriaManagedBean.voltar2}"/>
 
 	</ui:define>
 </ui:composition>
-
-
-
-
-
-
-
-
-
