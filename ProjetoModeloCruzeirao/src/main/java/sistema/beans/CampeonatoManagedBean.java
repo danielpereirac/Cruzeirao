@@ -88,10 +88,20 @@ public class CampeonatoManagedBean implements Serializable {
 		campeonatoAtual = null;
 		return "cadastroCampeonatoVer";
 	}
+	
+	public String voltar1() {
+		campeonatoAtual = null;
+		return "cadastroCampeonatoVerUsuario";
+	}
 
 	public String descricaoCampeonato(Campeonato campeonato) {
 		this.campeonatoAtual = campeonato;
 		return "descricaoCampeonato";
+	}
+	
+	public String descricaoCampeonato1(Campeonato campeonato) {
+		this.campeonatoAtual = campeonato;
+		return "descricaoCampeonatoUsuario";
 	}
 
 	public boolean mostrarInscricao(Campeonato campeonato) {

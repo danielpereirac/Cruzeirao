@@ -31,29 +31,19 @@
 					listener="#{campeonatoManagedBean.onRowEdit}"
 					update=":formTabelaCategoria" />
 
-				<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}" filterBy="#{aux.codigoCampeonato}" >
-					<p:outputLabel value="#{aux.codigoCampeonato}" />
-				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCampeonato.nome']}" filterBy="#{aux.nomeCampeonato}" >
 					<p:outputLabel value="#{aux.nomeCampeonato}" />
 				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCampeonato.ano']}" filterBy="#{aux.anoCampeonato}" >
 					<p:outputLabel value="#{aux.anoCampeonato}" />
 				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCampeonato.descricao']}">
-					<p:commandLink
-						action="#{campeonatoManagedBean.descricaoCampeonato(aux)}"
-						id="descricao" styleClass="ui-icon ui-icon-search"
-						style="text-align:center" >
-					</p:commandLink>
+				<p:column headerText="#{msg['pages.cadastroCampeonato.taxa']}" filterBy="#{aux.valorTaxa}" >
+					<p:outputLabel value="#{aux.valorTaxa}" />
 				</p:column>
-
-				<p:column headerText="#{msg['pages.cadastroCampeonato.categorias']}">
-					<p:commandLink
-						action="#{categoriaManagedBean.inserirCategorias(aux)}"
-					    update=":formTabelaCampeonato"
-						id="inserirCategoria" styleClass="ui-icon ui-icon-copy"
-						style="text-align:center" >	
+				<p:column headerText="#{msg['pages.cadastroCampeonato.descricao']}">
+					<p:commandLink id="descricao" styleClass="ui-icon ui-icon-search"
+						style="text-align:center"
+						action="#{campeonatoManagedBean.descricaoCampeonato1(aux)}" >					
 					</p:commandLink>
 				</p:column>
 
@@ -61,18 +51,6 @@
 					<p:outputLabel value="#{aux.inscricao}" />
 				</p:column>
 
-				<p:column headerText="#{msg['pages.cadastroCampeonato.opcoes']}">
-					<p:commandLink id="editar" styleClass="ui-icon ui-icon-pencil"
-						style="text-align:center"
-						action="#{campeonatoManagedBean.editarCampeonato(aux)}"
-					    update=":formTabelaCampeonato">
-					</p:commandLink>
-					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
-						style="text-align:center"
-						action="#{campeonatoManagedBean.removerCampeonato(aux)}"
-						update=":formTabelaCampeonato">
-					</p:commandLink>
-				</p:column>
 			</p:dataTable>
 		</h:form>
 
@@ -86,17 +64,15 @@
 			<p:dataTable
 				value="#{campeonatoManagedBean.getCampeonatoCategorias()}" var="aux"
 				id="tabelaCategoria">
-				<p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
-					<p:outputLabel value="#{aux.codigoCategoria}" />
-				</p:column>
+
 				<p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
 					<p:outputLabel value="#{aux.nome}" />
 				</p:column>
 				<p:column headerText="#{msg['pages.cadastroCategoria.descricao']}">
 					<p:commandLink
-						action="#{categoriaManagedBean.descricaoCategoria2(aux)}"
-						id="descricaoCategoria" styleClass="ui-icon ui-icon-search"
-						style="text-align:center">
+						action="#{categoriaManagedBean.descricaoCategoria3(aux)}"
+						id="descricao" styleClass="ui-icon ui-icon-search"
+						style="text-align:center" >
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>
