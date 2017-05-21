@@ -70,7 +70,7 @@
 
 			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
 				action="#{categoriaManagedBean.salvar}"
-				update=":formCategoria, :formTabelaCategoria, value" />
+				update=":formCategoria, value" />
 		</h:form>
 
 		<h:form id="value">
@@ -106,39 +106,6 @@
 		</h:form>
 
 		<br />
-
-		<h:form id="formTabelaCategoria">
-			<p:dataTable value="#{categoriaManagedBean.categorias}" var="aux"
-				id="tabelaCategoria">
-
-				<p:column headerText="#{msg['pages.cadastroCategoria.cod']}">
-					<p:outputLabel value="#{aux.codigoCategoria}" />
-				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCategoria.nome']}">
-					<p:outputLabel value="#{aux.nome}" />
-				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCategoria.descricao']}">
-					<p:commandLink
-						action="#{categoriaManagedBean.descricaoCategoria(aux)}"
-						value="Descricao">
-					</p:commandLink>
-				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCategoria.campeonato']}">
-					<p:outputLabel value="#{aux.getCampeonato().getNomeCampeonato()}" />
-				</p:column>
-
-				<p:column headerText="#{msg['pages.cadastroCategoria.opcoes']}">
-					<p:commandLink
-						action="#{categoriaManagedBean.editarCategoria(aux, aux.getCampeonato())}"
-						value="Editar / " update=":formTabelaCategoria">
-					</p:commandLink>
-					<p:commandLink
-						action="#{categoriaManagedBean.removerCategoria(aux)}"
-						value="Excluir" update=":formTabelaCategoria">
-					</p:commandLink>
-				</p:column>
-
-			</p:dataTable>
-		</h:form>
+		
 	</ui:define>
 </ui:composition>

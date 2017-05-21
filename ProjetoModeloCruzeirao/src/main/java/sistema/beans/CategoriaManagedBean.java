@@ -148,7 +148,7 @@ public class CategoriaManagedBean implements Serializable {
 
 		campeonatoCategoriaAtual = null;
 
-		return "cadastroCategoria";
+		return "cadastroCategoriaVer";
 	}
 
 	public String editarCategoria(Categoria categoria, Campeonato campeonato) {
@@ -184,9 +184,15 @@ public class CategoriaManagedBean implements Serializable {
 		this.categoriaAtual = categoria;
 		return "descricaoCategoria3";
 	}
+	
+	public String descricaoCategoria4(Categoria categoria) {
+		this.categoriaAtual = categoria;
+		return "descricaoCategoria4";
+	}
 
 	public String voltar() {
-		return "cadastroCategoria";
+		campeonatoCategoria = null;
+		return "cadastroCategoriaVer";
 	}
 
 	public String voltar2() {
@@ -197,6 +203,11 @@ public class CategoriaManagedBean implements Serializable {
 	public String voltar3() {
 		campeonatoCategoria = null;
 		return "cadastroCampeonatoVerUsuario";
+	}
+	
+	public String voltar4() {
+		campeonatoCategoria = null;
+		return "cadastroCategoriaVerUsuario";
 	}
 	
 	public Campeonato getCampeonatoCategoriaAtual() {
