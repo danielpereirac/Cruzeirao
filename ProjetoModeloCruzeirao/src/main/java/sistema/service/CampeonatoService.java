@@ -33,7 +33,7 @@ public class CampeonatoService extends Service {
 	}
 
 	public void removerCampeonatos(Campeonato campeonato) {
-
+		
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		campeonato = em.find(Campeonato.class, campeonato.getCodigoCampeonato());

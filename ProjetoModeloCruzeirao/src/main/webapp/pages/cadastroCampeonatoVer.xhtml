@@ -30,6 +30,8 @@
 				<p:ajax event="rowEdit"
 					listener="#{campeonatoManagedBean.onRowEdit}"
 					update=":formTabelaCategoria" />
+					
+				<p:growl id="deletar"/>
 
 				<p:column headerText="#{msg['pages.cadastroCampeonato.codigo']}" filterBy="#{aux.codigoCampeonato}" >
 					<p:outputLabel value="#{aux.codigoCampeonato}" />
@@ -70,7 +72,7 @@
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"
 						action="#{campeonatoManagedBean.removerCampeonato(aux)}"
-						update=":formTabelaCampeonato">
+						update=":formTabelaCampeonato, remover">
 					</p:commandLink>
 				</p:column>
 			</p:dataTable>

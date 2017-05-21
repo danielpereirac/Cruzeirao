@@ -8,6 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
+
 import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
 import sistema.service.CampeonatoService;
@@ -56,17 +58,40 @@ public class CategoriaManagedBean implements Serializable {
 			}
 		}
 
-		campeonatoCategoria.addCategorias(categoria);
-		servCam.alterarCampeonato(campeonatoCategoria);
-
-		categoria.setCampeonato(campeonatoCategoria);
-		
 		codigoCategoria = getId();
 		categoria.setCodigoCategoria(codigoCategoria);
+		categoria.setCampeonato(campeonatoCategoria);
 		service.salvar(categoria);
+		categoriaAtual = categoria;
+		
+		campeonatoCategoria.addCategorias(categoria);
+		servCam.alterarCampeonato(campeonatoCategoria);
+		
 		categoria = new Categoria(codigoCategoria);
+		
+		RequestContext.getCurrentInstance().execute("PF('dlg').show();");
+		
 		campeonatoCategoria = null;
 
+	}
+	
+	public void ir() {
+		if(categoriaAtual == null)
+			no();
+		else {
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage("Successful"));
+		}
+		categoriaAtual = null;
+   	}
+	
+	public void no() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage("Failed"));
+		
+		if(categoriaAtual != null)
+			removerCategoria(categoriaAtual); 
+		categoriaAtual = null;
 	}
 	
 	public void salvar2() {

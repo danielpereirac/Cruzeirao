@@ -75,7 +75,13 @@ public class CampeonatoManagedBean implements Serializable {
 	}
 
 	public void removerCampeonato(Campeonato campeonato) {
-		service.removerCampeonatos(campeonato);
+		if(!(campeonato.getCategorias().isEmpty()))
+		{
+			String s = "Cannot delete championship because there are categories";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(s));
+		}
+		else
+			service.removerCampeonatos(campeonato);
 	}
 
 	public String salvarEditar() {

@@ -86,45 +86,36 @@
 				<p:panelGrid id="output" columns="2" columnClasses="label, value">
 
 					<p:outputLabel value="#{msg['pages.cadastroCampeonato.inscricao']}" />
-					<p:outputLabel
-						value="#{campeonatoManagedBean.campeonatoAtual.inscricao}" />
+					<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.inscricao}" />
 
 					<p:outputLabel value="#{msg['pages.cadastroCampeonato.nome']}" />
-					<p:outputLabel
-						value="#{campeonatoManagedBean.campeonatoAtual.nomeCampeonato}" />
+					<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.nomeCampeonato}" />
 
 					<p:outputLabel value="#{msg['pages.cadastroCampeonato.ano']}" />
-					<p:outputLabel
-						value="#{campeonatoManagedBean.campeonatoAtual.anoCampeonato}" />
+					<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.anoCampeonato}" />
 
 					<h:outputText value="#{msg['pages.cadastroCampeonato.inicio']}" />
-					<h:outputText
-						value="#{campeonatoManagedBean.campeonatoAtual.dataInicioCampeonato}">
+					<h:outputText value="#{campeonatoManagedBean.campeonatoAtual.dataInicioCampeonato}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<h:outputText value="#{msg['pages.cadastroCampeonato.fim']}" />
-					<h:outputText
-						value="#{campeonatoManagedBean.campeonatoAtual.dataFimCampeonato}">
+					<h:outputText value="#{campeonatoManagedBean.campeonatoAtual.dataFimCampeonato}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
-					<h:outputText
-						value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
-					<h:outputText
-						value="#{campeonatoManagedBean.campeonatoAtual.dataInicioInscricao}">
+					<h:outputText value="#{msg['pages.cadastroCampeonato.periodoInicio']}" />
+					<h:outputText value="#{campeonatoManagedBean.campeonatoAtual.dataInicioInscricao}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<h:outputText value="#{msg['pages.cadastroCampeonato.periodoFim']}" />
-					<h:outputText
-						value="#{campeonatoManagedBean.campeonatoAtual.dataFimInscricao}">
+					<h:outputText value="#{campeonatoManagedBean.campeonatoAtual.dataFimInscricao}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
 
 					<p:outputLabel value="#{msg['pages.cadastroCampeonato.taxa']}" />
-					<p:outputLabel
-						value="#{campeonatoManagedBean.campeonatoAtual.valorTaxa}" />
+					<p:outputLabel value="#{campeonatoManagedBean.campeonatoAtual.valorTaxa}" />
 
 				</p:panelGrid>
 

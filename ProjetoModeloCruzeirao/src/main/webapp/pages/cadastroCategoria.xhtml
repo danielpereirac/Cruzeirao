@@ -20,7 +20,7 @@
 
 		<h:form id="formCategoria">
 			<p:panelGrid columns="2">
-			
+
 				<p:outputLabel for="seletorCampeonato"
 					value="#{msg['pages.cadastroCategoria.campeonato']}" />
 				<p:selectOneMenu id="seletorCampeonato"
@@ -70,7 +70,39 @@
 
 			<p:commandButton value="#{msg['pages.cadastroCategoria.btnSalvar']}"
 				action="#{categoriaManagedBean.salvar}"
-				update=":formCategoria, :formTabelaCategoria" />
+				update=":formCategoria, :formTabelaCategoria, value" />
+		</h:form>
+
+		<h:form id="value">
+			<p:growl id="msg" showDetail="true" />
+			<p:dialog header="Values" resizable="false" showEffect="fade"
+				widgetVar="dlg">
+				<p:panelGrid id="output" columns="2" columnClasses="label, value">
+
+					<p:outputLabel value="#{msg['pages.cadastroCategoria.nome']}" />
+					<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.nome}" />
+					
+					<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMinJogadores']}" />
+					<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.minJogadores}" />
+					
+					<p:outputLabel value="#{msg['pages.cadastroCategoria.qntMaxJogadores']}" />
+					<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.maxJogadores}" />
+					
+					<p:outputLabel value="#{msg['pages.cadastroCategoria.sexoCategoria']}" />
+					<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.sexo}" />
+					
+					<p:outputLabel value="#{msg['pages.cadastroCategoria.campeonato']}" />
+					<p:outputLabel value="#{categoriaManagedBean.categoriaAtual.campeonato.nomeCampeonato}" />
+					
+				</p:panelGrid>
+
+				<p:commandButton value="Yes" action="#{categoriaManagedBean.ir}"
+					update="value, msg" />
+				<p:commandButton value="No" action="#{categoriaManagedBean.no}"
+					update="value, msg" />
+
+			</p:dialog>
+
 		</h:form>
 
 		<br />
