@@ -25,8 +25,8 @@
 			<p:outputLabel value="#{msg['pages.cadastroEquipe.cidade']}" />
 			<p:outputLabel value="#{EquipeManagedBean.equipeAtual.cidade}" />
 			<p:outputLabel value="#{msg['pages.cadastroEquipe.diretor']}" />
-			<p:outputLabel value="#{EquipeManagedBean.equipeAtual.diretor}"
-							converter="usuarioConverter" />
+			<p:outputLabel value="#{EquipeManagedBean.equipeAtual.diretor.nome}"
+							 />
 		</p:panelGrid>
 		
 		<p:commandButton value="#{msg['pages.cadastroEquipe.btnVoltar']}"

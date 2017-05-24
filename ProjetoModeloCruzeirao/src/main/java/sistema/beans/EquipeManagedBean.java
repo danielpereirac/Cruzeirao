@@ -8,8 +8,11 @@ import javax.faces.bean.SessionScoped;
 
 import sistema.modelos.Campeonato;
 import sistema.modelos.Equipe;
+import sistema.modelos.Inscricao;
 import sistema.modelos.Equipe;
 import sistema.service.EquipeService;
+import sistema.beans.InscricaoManagedBean;
+
 
 @ManagedBean
 @SessionScoped
@@ -50,6 +53,7 @@ public class EquipeManagedBean implements Serializable{
 		this.equipeAtual = equipe;
 		return "descricaoEquipe";
 	}
+	
 	
 	public String editarEquipe(Equipe equipe)
 	{

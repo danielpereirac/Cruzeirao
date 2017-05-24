@@ -1,8 +1,19 @@
 package sistema.modelos;
 
-public class Inscrito {
+import java.io.Serializable;
 
-	private Enum tipo;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@SuppressWarnings("serial")
+@Entity
+public class Inscrito implements Serializable{
+
+	
+	@Id
+	private String nomeUser;
+	//@ManyToOne
 	private Usuario usuario;
 	private Inscricao inscricao;
 	private boolean aceiteUsuario;
@@ -10,11 +21,20 @@ public class Inscrito {
 	private boolean inscricaoValidada;
 	
 	
-	public Enum getTipo() {
-		return tipo;
+	public Inscrito(Usuario usuario, Inscricao inscricao){
+		this.usuario=usuario;
+		this.inscricao=inscricao;
 	}
-	public void setTipo(Enum tipo) {
-		this.tipo = tipo;
+	
+	public Inscrito(){
+		
+	}
+	
+	public String getNomeUser() {
+		return nomeUser;
+	}
+	public void setNomeUser(String nomeUser) {
+		this.nomeUser = nomeUser;
 	}
 	public Usuario getUsuario() {
 		return usuario;

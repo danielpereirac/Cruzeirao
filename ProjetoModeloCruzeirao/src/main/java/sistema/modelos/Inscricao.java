@@ -1,9 +1,15 @@
 package sistema.modelos;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Inscricao {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@SuppressWarnings("serial")
+@Entity
+public class Inscricao implements Serializable {
+	@Id
 	private long numero;
 	private boolean pagamento;
 	private boolean validada;
@@ -12,7 +18,13 @@ public class Inscricao {
 	private List<Partida> partidas;
 	private Equipe equipe;
 	
+	public Inscricao(){
+		
+	}
 	
+	public Inscricao(long numero) {
+		this.numero=numero;
+			}
 	public long getNumero() {
 		return numero;
 	}
