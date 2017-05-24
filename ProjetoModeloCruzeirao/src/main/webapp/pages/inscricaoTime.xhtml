@@ -21,7 +21,7 @@
 			<p:panelGrid columns="2">
 				<p:outputLabel value="#{msg['pages.inscricao.categoria']}" for="seletorCategoria" />
 			<p:selectOneMenu id="seletorCategoria" value="#{inscricaoManagedBean.categoriaInscricao}"
-					converter="categoriaConverter" >
+					converter="categoriaConverter"   >
 					<f:selectItem itemValue=""
 						itemLabel="#{msg['pages.inscricao.categoria']}" />
 					<f:selectItems value="#{inscricaoManagedBean.categorias}"
