@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-
+import sistema.modelos.Inscricao;
 import sistema.modelos.Inscrito;
 
 public class InscritoService extends Service{
@@ -32,6 +32,15 @@ public class InscritoService extends Service{
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(inscrito);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void alterarInscrito(Inscrito inscrito) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(inscrito);
 		em.getTransaction().commit();
 		em.close();
 	}

@@ -3,8 +3,10 @@ package sistema.modelos;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @SuppressWarnings("serial")
 @Entity
@@ -13,6 +15,7 @@ public class Inscricao implements Serializable {
 	private long numero;
 	private boolean pagamento;
 	private boolean validada;
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="inscricao")
 	private List<Inscrito> inscritos;
 	private Categoria categoria;
 	private List<Partida> partidas;
@@ -67,6 +70,7 @@ public class Inscricao implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
+	
 	
 	
 	

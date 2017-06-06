@@ -31,11 +31,7 @@ public class EquipeManagedBean implements Serializable{
 		equipe = new Equipe(codigoEquipe);	
 	}
 	
-	public String salvarEditar()
-	{
-		return "cadastroEquipe";
-	}
-
+	
 	public Equipe getEquipe() {
 		return equipe;
 	}
@@ -97,6 +93,12 @@ public class EquipeManagedBean implements Serializable{
 
 		else
 			return 1;
+	}
+	
+	public String salvarEditar() {
+		service.alterarEquipe(equipeAtual);
+		equipeAtual = null;
+		return "cadastroEquipe";
 	}
 	
 }

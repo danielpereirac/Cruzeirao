@@ -2,9 +2,12 @@ package sistema.modelos;
 
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import java.util.Date;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 @SuppressWarnings("serial")
 @Entity
 public class Usuario implements Serializable{
@@ -20,6 +23,7 @@ public class Usuario implements Serializable{
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private List <Campeonato> campeonatos;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="usuario")
 	private List <Inscrito> incricoes;
 	private List <Equipe> equipes;
 	private String foto;
@@ -67,8 +71,8 @@ public class Usuario implements Serializable{
 	public List<Inscrito> getIncricoes() {
 		return incricoes;
 	}
-	public void setIncricoes(List<Inscrito> incricoes) {
-		this.incricoes = incricoes;
+	public void setIncricoes(Inscrito inscrito) {
+		this.incricoes.add(inscrito);
 	}
 	public List<Equipe> getEquipes() {
 		return equipes;

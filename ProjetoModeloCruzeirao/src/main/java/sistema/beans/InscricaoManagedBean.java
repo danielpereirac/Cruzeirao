@@ -7,18 +7,17 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-
-
-
+import sistema.modelos.Campeonato;
 import sistema.modelos.Categoria;
 import sistema.modelos.Equipe;
 import sistema.modelos.Inscricao;
 import sistema.modelos.Inscrito;
 import sistema.modelos.Usuario;
 import sistema.beans.InscritoManagedBean;
-
+import sistema.service.CampeonatoService;
 import sistema.service.CategoriaService;
 import sistema.service.InscricaoService;
+import sistema.service.InscritoService;
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -33,9 +32,27 @@ public class InscricaoManagedBean implements Serializable{
 	private Categoria categoriaInscricao;
 	private CategoriaService servCat = new CategoriaService();
 	private List<Usuario> inscritosSelecionados;
-	private InscritoManagedBean inscritoManagedBean;
-	private List<Inscrito> inscritos;
+	private InscritoManagedBean inscritoManagedBean= new InscritoManagedBean();
+	private List<Inscrito> inscritos= new ArrayList<Inscrito>();
 	
+	private Campeonato campeonatoCategoria;
+	private CampeonatoService servCam = new CampeonatoService();
+	private InscritoService servIns = new InscritoService();
+	
+	
+	public List<Inscrito> getInscritos() {
+		return inscritos;
+	}
+
+
+	public void setInscritos(Inscrito inscrito) {
+		this.inscritos.add(inscrito);
+	}
+
+	
+	public List<Campeonato> getCampeonatos() {
+		return servCam.getCampeonatos();
+	}
 	
 	
 	public InscritoManagedBean getInscritoManagedBean() {
@@ -47,8 +64,21 @@ public class InscricaoManagedBean implements Serializable{
 	}
 
 	public String finalizarInscricao(Equipe equipe){
+		List<Inscricao> inscricoes =service.getInscricoes();
+		boolean finalizada;
+		for(Inscricao i: inscricoes)
+		{	
+			if(i.getEquipe().getCodigoEquipe()==equipe.getCodigoEquipe()){
+			inscricaoAtual=i;
+			return "descricaoInscricao";
+			}
+					
+		}
+		
 		inscricao.setEquipe(equipe);
-		return "inscricaoTime";
+		return "inscricaoTime";	
+		
+		
 	}
 	
 	public long getNumero() {
@@ -86,20 +116,23 @@ public class InscricaoManagedBean implements Serializable{
 	}
 	
 	public String salvar(){
+		inscritos.clear();
 		numero = getId();
 		inscricao.setNumero(numero);
 		inscricao.setCategoria(categoriaInscricao);
+		service.salvar(inscricao);
 		//inscricao.setInscritos(inscritosSelecionados);
 	//	inscritos.clear();
 	//	inscritos= new ArrayList<Inscrito>();
 		
 		for(Usuario u: inscritosSelecionados){
 			Inscrito i= inscritoManagedBean.salvarInscrito(u, inscricao);
-			inscritos.add(i);
+			inscritoManagedBean.setInscricao(i, inscricao);
+			setInscritos(i);
 			
 	}
 		inscricao.setInscritos(inscritos);
-		service.salvar(inscricao);
+		service.alterarInscricao(inscricao);
 		inscricaoAtual=inscricao;
 		inscricao = new Inscricao(numero);
 		
@@ -147,9 +180,43 @@ public class InscricaoManagedBean implements Serializable{
 		return "cadastroEquipe";
 		
 	}
+
+	public Campeonato getCampeonatoCategoria() {
+		return campeonatoCategoria;
+	}
+
+	public void setCampeonatoCategoria(Campeonato campeonatoCategoria) {
+		this.campeonatoCategoria = campeonatoCategoria;
+	}
 	
+	public void descricaoInscricao(Inscricao i){
+		this.inscricaoAtual=i;
+	}
 	
+	public List<Inscricao> getInscricoes() {
+		return service.getInscricoes();
+	}
 	
+	public void salvarValidacao(Inscricao ins){
+		service.alterarInscricao(ins);
+			
+	}
+	
+	public void validarInscricao(Inscricao i){
+		i.setValidada(true);
+		service.alterarInscricao(i);
+		for(Inscrito in: i.getInscritos()){
+			in.setInscricaoValidada(true);
+			servIns.alterarInscrito(in);
+			
+		}
+		
+	}
+	
+	public void validarPagamento(Inscricao i){
+		i.setPagamento(true);
+		service.alterarInscricao(i);
+	}
 	
 	
 }
